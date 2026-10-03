@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_form_sections form_id="c71a59d18cd740de872b14829b787783" sys_domain="global" table="x_1664823_remote_0_remote_sync_log" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-03 14:45:27</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>b70f98c4da5e426cb6ecb765391060b0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_1664823_remote_0_remote_sync_log" name="x_1664823_remote_0_remote_sync_log" sys_domain="global" view="Default view">c71a59d18cd740de872b14829b787783</sys_ui_form>
+            <sys_ui_section caption="Sync Overview" display_value="Sync Overview" name="x_1664823_remote_0_remote_sync_log" sys_domain="global" view="Default view">0c5dd274e0254a0f8b5ab18bb8c7c49c</sys_ui_section>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-03 14:45:27</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-03 14:45:28</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f54374168c9e48a6a0708816d6281484</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_1664823_remote_0_remote_sync_log" name="x_1664823_remote_0_remote_sync_log" sys_domain="global" view="Default view">c71a59d18cd740de872b14829b787783</sys_ui_form>
+            <sys_ui_section caption="HTTP &amp; Import Details" display_value="HTTP &amp; Import Details" name="x_1664823_remote_0_remote_sync_log" sys_domain="global" view="Default view">c593898a2a364713bf4501b27c84b0f7</sys_ui_section>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-03 14:45:28</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>2</position>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-03 14:45:28</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>44bd1423f39b48569ce4b4c9872cb59b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_1664823_remote_0_remote_sync_log" name="x_1664823_remote_0_remote_sync_log" sys_domain="global" view="Default view">c71a59d18cd740de872b14829b787783</sys_ui_form>
+            <sys_ui_section caption="Request &amp; Response" display_value="Request &amp; Response" name="x_1664823_remote_0_remote_sync_log" sys_domain="global" view="Default view">a6fef8961e624e059ce2d326b30f0a72</sys_ui_section>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-03 14:45:28</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_1664823_remote_0_remote_sync_log</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-03 14:45:28</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c71a59d18cd740de872b14829b787783</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_1664823_remote_0_remote_sync_log</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
+            <sys_update_name>sys_ui_form_sections_c71a59d18cd740de872b14829b787783</sys_update_name>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-03 14:45:28</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>

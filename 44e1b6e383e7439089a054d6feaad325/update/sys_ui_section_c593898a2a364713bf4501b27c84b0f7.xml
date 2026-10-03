@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="HTTP &amp; Import Details" section_id="c593898a2a364713bf4501b27c84b0f7" sys_domain="global" table="x_1664823_remote_0_remote_sync_log" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.begin_split</element>
+            <position>0</position>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-03 14:45:29</sys_created_on>
+            <sys_id>25f1e4284e064503966be04a453b7666</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="HTTP &amp; Import Details" display_value="HTTP &amp; Import Details" name="x_1664823_remote_0_remote_sync_log" sys_domain="global" view="Default view">c593898a2a364713bf4501b27c84b0f7</sys_ui_section>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-03 14:45:29</sys_updated_on>
+            <sys_user/>
+            <type>.begin_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_http_status</element>
+            <position>1</position>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-03 14:45:29</sys_created_on>
+            <sys_id>7eef1b72483e45c9869042e924f12fc9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="HTTP &amp; Import Details" display_value="HTTP &amp; Import Details" name="x_1664823_remote_0_remote_sync_log" sys_domain="global" view="Default view">c593898a2a364713bf4501b27c84b0f7</sys_ui_section>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-03 14:45:29</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>2</position>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-03 14:45:29</sys_created_on>
+            <sys_id>c6ae2b18700b4b5084e8e840efd0b4b4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="HTTP &amp; Import Details" display_value="HTTP &amp; Import Details" name="x_1664823_remote_0_remote_sync_log" sys_domain="global" view="Default view">c593898a2a364713bf4501b27c84b0f7</sys_ui_section>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-03 14:45:29</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_import_status</element>
+            <position>3</position>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-03 14:45:29</sys_created_on>
+            <sys_id>2e8cc8985d474473bb7939e475e62b62</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="HTTP &amp; Import Details" display_value="HTTP &amp; Import Details" name="x_1664823_remote_0_remote_sync_log" sys_domain="global" view="Default view">c593898a2a364713bf4501b27c84b0f7</sys_ui_section>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-03 14:45:29</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>4</position>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-03 14:45:29</sys_created_on>
+            <sys_id>d02425e5177d4c4398cb1e60a2497a73</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="HTTP &amp; Import Details" display_value="HTTP &amp; Import Details" name="x_1664823_remote_0_remote_sync_log" sys_domain="global" view="Default view">c593898a2a364713bf4501b27c84b0f7</sys_ui_section>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-03 14:45:29</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>HTTP &amp; Import Details</caption>
+            <header>false</header>
+            <name>x_1664823_remote_0_remote_sync_log</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-03 14:45:29</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c593898a2a364713bf4501b27c84b0f7</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_1664823_remote_0_remote_sync_log</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
+            <sys_update_name>sys_ui_section_c593898a2a364713bf4501b27c84b0f7</sys_update_name>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-03 14:45:29</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>
