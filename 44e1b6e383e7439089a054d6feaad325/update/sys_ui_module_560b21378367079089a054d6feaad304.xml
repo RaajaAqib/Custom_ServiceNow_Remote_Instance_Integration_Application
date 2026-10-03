@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_module">
+    <sys_ui_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value="Remote Sync Log">da0bedf38367079089a054d6feaad3cc</application>
+        <filter/>
+        <name>Remote Sync Logs</name>
+        <order/>
+        <path/>
+        <path_relative_to_root>false</path_relative_to_root>
+        <roles>x_1664823_remote_0.remote_sync_log_user</roles>
+        <sys_class_name>sys_ui_module</sys_class_name>
+        <sys_created_by>Aqib</sys_created_by>
+        <sys_created_on>2026-10-02 12:16:54</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>560b21378367079089a054d6feaad304</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Remote Sync Logs</sys_name>
+        <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
+        <sys_update_name>sys_ui_module_560b21378367079089a054d6feaad304</sys_update_name>
+        <sys_updated_by>Aqib</sys_updated_by>
+        <sys_updated_on>2026-10-02 12:16:54</sys_updated_on>
+        <table>x_1664823_remote_0_remote_sync_log</table>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+    </sys_ui_module>
+</record_update>

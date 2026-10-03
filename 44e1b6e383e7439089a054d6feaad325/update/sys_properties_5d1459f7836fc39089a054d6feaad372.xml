@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>Written to Correlation display after the first send</description>
+        <ignore_cache>true</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_1664823_remote_0.partner_system_name</name>
+        <read_roles/>
+        <suffix>x_1664823_remote_0.partner_system_name</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>Aqib</sys_created_by>
+        <sys_created_on>2026-10-02 10:37:35</sys_created_on>
+        <sys_id>5d1459f7836fc39089a054d6feaad372</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1664823_remote_0.partner_system_name</sys_name>
+        <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
+        <sys_update_name>sys_properties_5d1459f7836fc39089a054d6feaad372</sys_update_name>
+        <sys_updated_by>Aqib</sys_updated_by>
+        <sys_updated_on>2026-10-02 10:37:35</sys_updated_on>
+        <type>string</type>
+        <value>PROVIDER-353640</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=5d1459f7836fc39089a054d6feaad372"/>
+</record_update>

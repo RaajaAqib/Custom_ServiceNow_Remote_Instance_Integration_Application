@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_list parent="" relationship="" sys_domain="global" table="x_1664823_remote_0_remote_sync_log" version="2" view="">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>u_flow_name</element>
+            <list_id display_value="x_1664823_remote_0_remote_sync_log" element="NULL" name="x_1664823_remote_0_remote_sync_log" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">10227b3b832b879089a054d6feaad331</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-02 22:07:08</sys_created_on>
+            <sys_id>5c227b3b832b879089a054d6feaad333</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-02 22:07:08</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>u_http_status</element>
+            <list_id display_value="x_1664823_remote_0_remote_sync_log" element="NULL" name="x_1664823_remote_0_remote_sync_log" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">10227b3b832b879089a054d6feaad331</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-02 22:07:08</sys_created_on>
+            <sys_id>5c227b3b832b879089a054d6feaad334</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-02 22:07:08</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>u_import_status</element>
+            <list_id display_value="x_1664823_remote_0_remote_sync_log" element="NULL" name="x_1664823_remote_0_remote_sync_log" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">10227b3b832b879089a054d6feaad331</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-02 22:07:08</sys_created_on>
+            <sys_id>d0227b3b832b879089a054d6feaad335</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-02 22:07:08</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>u_incident</element>
+            <list_id display_value="x_1664823_remote_0_remote_sync_log" element="NULL" name="x_1664823_remote_0_remote_sync_log" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">10227b3b832b879089a054d6feaad331</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-02 22:07:08</sys_created_on>
+            <sys_id>58227b3b832b879089a054d6feaad335</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-02 22:07:08</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>u_partner_number</element>
+            <list_id display_value="x_1664823_remote_0_remote_sync_log" element="NULL" name="x_1664823_remote_0_remote_sync_log" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">10227b3b832b879089a054d6feaad331</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-02 22:07:08</sys_created_on>
+            <sys_id>dc227b3b832b879089a054d6feaad335</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-02 22:07:08</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>u_request_payload</element>
+            <list_id display_value="x_1664823_remote_0_remote_sync_log" element="NULL" name="x_1664823_remote_0_remote_sync_log" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">10227b3b832b879089a054d6feaad331</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>5</position>
+            <sum>false</sum>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-02 22:07:08</sys_created_on>
+            <sys_id>54227b3b832b879089a054d6feaad336</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-02 22:07:08</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>u_response_error</element>
+            <list_id display_value="x_1664823_remote_0_remote_sync_log" element="NULL" name="x_1664823_remote_0_remote_sync_log" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">10227b3b832b879089a054d6feaad331</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>6</position>
+            <sum>false</sum>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-02 22:07:08</sys_created_on>
+            <sys_id>d8227b3b832b879089a054d6feaad336</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-02 22:07:08</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>u_status</element>
+            <list_id display_value="x_1664823_remote_0_remote_sync_log" element="NULL" name="x_1664823_remote_0_remote_sync_log" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">10227b3b832b879089a054d6feaad331</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>7</position>
+            <sum>false</sum>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-02 22:07:08</sys_created_on>
+            <sys_id>50227b3b832b879089a054d6feaad337</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-02 22:07:08</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>x_1664823_remote_0_remote_sync_log</name>
+            <parent/>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>Aqib</sys_created_by>
+            <sys_created_on>2026-10-02 22:07:08</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>10227b3b832b879089a054d6feaad331</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_1664823_remote_0_remote_sync_log</sys_name>
+            <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
+            <sys_update_name>sys_ui_list_x_1664823_remote_0_remote_sync_log_null</sys_update_name>
+            <sys_updated_by>Aqib</sys_updated_by>
+            <sys_updated_on>2026-10-02 22:07:08</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

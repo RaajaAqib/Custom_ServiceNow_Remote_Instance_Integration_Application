@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_application">
+    <sys_app_application action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category display_value="Custom Applications">e0355b31ef303000a61d5a3615c0fb78</category>
+        <description/>
+        <device_type>browser</device_type>
+        <hint/>
+        <name>Remote Sync Log</name>
+        <order>100</order>
+        <roles>x_1664823_remote_0.remote_sync_log_user</roles>
+        <sys_class_name>sys_app_application</sys_class_name>
+        <sys_created_by>Aqib</sys_created_by>
+        <sys_created_on>2026-10-02 12:16:53</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>860badf38367079089a054d6feaad3e8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Remote Sync Log</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
+        <sys_update_name>sys_app_application_860badf38367079089a054d6feaad3e8</sys_update_name>
+        <sys_updated_by>Aqib</sys_updated_by>
+        <sys_updated_on>2026-10-02 12:16:53</sys_updated_on>
+        <title>Remote Sync Log</title>
+        <view_name/>
+    </sys_app_application>
+</record_update>

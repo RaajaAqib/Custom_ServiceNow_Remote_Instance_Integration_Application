@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="f38ae9738367079089a054d6feaad39a" label="Remote Sync Log" max_length="40" name="x_1664823_remote_0_remote_sync_log" type="collection">
+        <element label="Flow name" max_length="100" name="u_flow_name" type="string"/>
+        <element label="Partner number" max_length="60" name="u_partner_number" type="string"/>
+        <element label="Import status" max_length="40" name="u_import_status" type="string"/>
+        <element label="Request payload" max_length="7000" name="u_request_payload" type="string"/>
+        <element label="HTTP status" max_length="40" name="u_http_status" type="string"/>
+        <element label="Incident" max_length="32" name="u_incident" reference="incident" type="reference"/>
+        <element label="Response / error" max_length="7000" name="u_response_error" type="string"/>
+        <element choice="1" label="Status" max_length="40" name="u_status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Failed" sequence="1" value="failed"/>
+                <element inactive_on_update="false" label="Success" sequence="0" value="success"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="u_incident"/>
+        </index>
+    </element>
+</database>

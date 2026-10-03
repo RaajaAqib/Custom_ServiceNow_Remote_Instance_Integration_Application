@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="6ee33a2f83e7439089a054d6feaad335" extends="sys_import_set_row" label="Incident From Customer" max_length="40" name="x_1664823_remote_0_incident_from_customer" type="collection">
+        <element label="Close notes" max_length="40000" name="u_close_notes" type="string"/>
+        <element label="Service" max_length="100" name="u_business_service" type="string"/>
+        <element label="Description" max_length="4000" name="u_description" type="string"/>
+        <element label="Category" max_length="40" name="u_category" type="string"/>
+        <element label="Configuration item" max_length="100" name="u_cmdb_ci" type="string"/>
+        <element label="Short description" max_length="160" name="u_short_description" type="string"/>
+        <element label="Receiver sys_id" max_length="40" name="u_receiver_sys_id" type="string"/>
+        <element label="Service offering" max_length="100" name="u_service_offering" type="string"/>
+        <element label="Subcategory" max_length="40" name="u_subcategory" type="string"/>
+        <element label="Urgency" max_length="40" name="u_urgency" type="string"/>
+        <element label="State" max_length="120" name="u_state" type="string"/>
+        <element label="Sender sys_id" max_length="40" name="u_sender_sys_id" type="string"/>
+        <element label="Comments" max_length="4000" name="u_comments" type="string"/>
+        <element label="Caller email" max_length="100" name="u_caller_email" type="string"/>
+        <element label="Impact" max_length="40" name="u_impact" type="string"/>
+        <element label="Sender system" max_length="40" name="u_sender_system" type="string"/>
+        <element label="Sender number" max_length="40" name="u_sender_number" type="string"/>
+        <element label="Close code" max_length="120" name="u_close_code" type="string"/>
+    </element>
+</database>

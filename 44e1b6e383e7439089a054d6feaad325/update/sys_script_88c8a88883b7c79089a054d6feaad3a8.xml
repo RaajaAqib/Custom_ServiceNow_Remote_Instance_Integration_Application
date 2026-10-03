@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>true</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>incident</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition table="incident">commentsVALCHANGES^correlation_idISNOTEMPTY^sys_updated_by!=integration.inbound^EQ<item endquery="false" field="comments" goto="false" newquery="false" operator="VALCHANGES" or="false" value=""/>
+            <item endquery="false" field="correlation_id" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/>
+            <item endquery="false" field="sys_updated_by" goto="false" newquery="false" operator="!=" or="false" value="integration.inbound"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message><![CDATA[<p><strong>Subflow: <code>Remote Sync: Send Comment is triggerd</code></strong></p>
+<p> </p>]]></message>
+        <name>Remote Sync: Send Comment</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous) {
+    // Newest comment comes with a header line "date - user (Additional comments)"; remove it
+    var entry = current.comments.getJournalEntry(1);
+    var comment = entry.replace(/^.*\r?\n/, '');
+    if (!comment) {
+        return;
+    }
+    // Start the integration Subflow asynchronously so the agent's save is never slowed down
+    sn_fd.FlowAPI.getRunner()
+        .subflow('x_1664823_remote_0.remote_sync_send_comment')
+        .inBackground()
+        .withInputs({ incident: current, comment: comment })
+        .run();
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>Aqib</sys_created_by>
+        <sys_created_on>2026-10-03 02:10:18</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>88c8a88883b7c79089a054d6feaad3a8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Remote Sync: Send Comment</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
+        <sys_update_name>sys_script_88c8a88883b7c79089a054d6feaad3a8</sys_update_name>
+        <sys_updated_by>Aqib</sys_updated_by>
+        <sys_updated_on>2026-10-03 02:10:18</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=88c8a88883b7c79089a054d6feaad3a8"/>
+</record_update>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="DELETE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>Aqib</sys_created_by>
+        <sys_created_on>2026-10-01 22:52:29</sys_created_on>
+        <sys_id>72e2322b83e7439089a054d6feaad3d6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1664823_remote_0_incident_from_customer.x_1664823_remote_0.admin</sys_name>
+        <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
+        <sys_security_acl display_value="x_1664823_remote_0_incident_from_customer">6ee2322b83e7439089a054d6feaad36e</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_72e2322b83e7439089a054d6feaad3d6</sys_update_name>
+        <sys_updated_by>Aqib</sys_updated_by>
+        <sys_updated_on>2026-10-01 22:52:29</sys_updated_on>
+        <sys_user_role display_value="x_1664823_remote_0.admin" name="x_1664823_remote_0.admin">64e17ae383e7439089a054d6feaad3b8</sys_user_role>
+    </sys_security_acl_role>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</application>
+        <file_path/>
+        <instance_id>27b908513be8e6d4986d048aa4e45a1b</instance_id>
+        <instance_name>dev311022</instance_name>
+        <name>sys_security_acl_role_72e2322b83e7439089a054d6feaad3d6</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_class_name>sys_security_acl_role</sys_class_name><sys_created_by>Aqib</sys_created_by><sys_created_on>2026-10-01 22:52:29</sys_created_on><sys_id>72e2322b83e7439089a054d6feaad3d6</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_1664823_remote_0_incident_from_customer.x_1664823_remote_0.admin</sys_name><sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package><sys_policy/><sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope><sys_security_acl display_value="x_1664823_remote_0_incident_from_customer">6ee2322b83e7439089a054d6feaad36e</sys_security_acl><sys_update_name>sys_security_acl_role_72e2322b83e7439089a054d6feaad3d6</sys_update_name><sys_updated_by>Aqib</sys_updated_by><sys_updated_on>2026-10-01 22:52:29</sys_updated_on><sys_user_role display_value="x_1664823_remote_0.admin" name="x_1664823_remote_0.admin">64e17ae383e7439089a054d6feaad3b8</sys_user_role></sys_security_acl_role></record_update>]]></payload>
+        <payload_hash>2060059935</payload_hash>
+        <record_name>x_1664823_remote_0_incident_from_customer.x_1664823_remote_0.admin</record_name>
+        <reverted_from/>
+        <source>cce17ae383e7439089a054d6feaad30a</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Aqib</sys_created_by>
+        <sys_created_on>2026-10-01 22:52:29</sys_created_on>
+        <sys_id>f6e2722b83e7439089a054d6feaad316</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0f9ab522f0000001</sys_recorded_at>
+        <sys_updated_by>Aqib</sys_updated_by>
+        <sys_updated_on>2026-10-01 22:52:29</sys_updated_on>
+        <type>Access Roles</type>
+        <update_guid>b6e2722bb8e74390e3bd410073ceb215</update_guid>
+        <update_guid_history>b6e2722bb8e74390e3bd410073ceb215:2060059935</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="x_1664823_remote_0_incident_from_customer.x_1664823_remote_0.admin">d1d3322f83e7439089a054d6feaad3b1</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Aqib</sys_created_by>
+        <sys_created_on>2026-10-01 22:56:29</sys_created_on>
+        <sys_db_object display_value="" name="sys_security_acl_role">sys_security_acl_role</sys_db_object>
+        <sys_id>256826c50c1e4588b7a1a33466de2ec4</sys_id>
+        <sys_metadata>72e2322b83e7439089a054d6feaad3d6</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1664823_remote_0_incident_from_customer.x_1664823_remote_0.admin</sys_name>
+        <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
+        <sys_parent display_value="">6ee2322b83e7439089a054d6feaad36e</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
+        <sys_scope_delete display_value="">68a191ec272a4b2caf201bd1ec858110</sys_scope_delete>
+        <sys_update_name>sys_security_acl_role_72e2322b83e7439089a054d6feaad3d6</sys_update_name>
+        <sys_update_version display_value="sys_security_acl_role_72e2322b83e7439089a054d6feaad3d6">f6e2722b83e7439089a054d6feaad316</sys_update_version>
+        <sys_updated_by>Aqib</sys_updated_by>
+        <sys_updated_on>2026-10-01 22:56:29</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

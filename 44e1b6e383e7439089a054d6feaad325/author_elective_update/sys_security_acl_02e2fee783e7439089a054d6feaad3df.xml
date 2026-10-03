@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="DELETE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>false</advanced>
+        <applies_to/>
+        <condition/>
+        <controlled_by_refs/>
+        <decision_type>allow</decision_type>
+        <description/>
+        <local_or_existing>Existing</local_or_existing>
+        <name>x_1664823_remote_0_incident_from_customer</name>
+        <operation display_value="write">write</operation>
+        <script/>
+        <security_attribute/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>Aqib</sys_created_by>
+        <sys_created_on>2026-10-01 22:52:26</sys_created_on>
+        <sys_id>02e2fee783e7439089a054d6feaad3df</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1664823_remote_0_incident_from_customer</sys_name>
+        <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
+        <sys_update_name>sys_security_acl_02e2fee783e7439089a054d6feaad3df</sys_update_name>
+        <sys_updated_by>Aqib</sys_updated_by>
+        <sys_updated_on>2026-10-01 22:52:26</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</application>
+        <file_path/>
+        <instance_id>27b908513be8e6d4986d048aa4e45a1b</instance_id>
+        <instance_name>dev311022</instance_name>
+        <name>sys_security_acl_02e2fee783e7439089a054d6feaad3df</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl"><sys_security_acl action="INSERT_OR_UPDATE"><active>true</active><admin_overrides>true</admin_overrides><advanced>false</advanced><applies_to/><condition/><controlled_by_refs/><decision_type>allow</decision_type><description/><local_or_existing>Existing</local_or_existing><name>x_1664823_remote_0_incident_from_customer</name><operation display_value="write">write</operation><script/><security_attribute/><sys_class_name>sys_security_acl</sys_class_name><sys_created_by>Aqib</sys_created_by><sys_created_on>2026-10-01 22:52:26</sys_created_on><sys_id>02e2fee783e7439089a054d6feaad3df</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_1664823_remote_0_incident_from_customer</sys_name><sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package><sys_policy/><sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope><sys_update_name>sys_security_acl_02e2fee783e7439089a054d6feaad3df</sys_update_name><sys_updated_by>Aqib</sys_updated_by><sys_updated_on>2026-10-01 22:52:26</sys_updated_on><type display_value="record">record</type></sys_security_acl></record_update>]]></payload>
+        <payload_hash>291315738</payload_hash>
+        <record_name>x_1664823_remote_0_incident_from_customer</record_name>
+        <reverted_from/>
+        <source>cce17ae383e7439089a054d6feaad30a</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Aqib</sys_created_by>
+        <sys_created_on>2026-10-01 22:52:27</sys_created_on>
+        <sys_id>c2e2322b83e7439089a054d6feaad31d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0f9ab48b50000001</sys_recorded_at>
+        <sys_updated_by>Aqib</sys_updated_by>
+        <sys_updated_on>2026-10-01 22:52:27</sys_updated_on>
+        <type>Access Control</type>
+        <update_guid>82e2322bb7e74390579403021afd4c1c</update_guid>
+        <update_guid_history>82e2322bb7e74390579403021afd4c1c:291315738</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Aqib</sys_created_by>
+        <sys_created_on>2026-10-01 22:56:28</sys_created_on>
+        <sys_db_object display_value="" name="sys_security_acl">sys_security_acl</sys_db_object>
+        <sys_id>3a6a242a7b8846859cf8556bb44370d1</sys_id>
+        <sys_metadata>02e2fee783e7439089a054d6feaad3df</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1664823_remote_0_incident_from_customer</sys_name>
+        <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
+        <sys_parent display_value="">8bc2f6e783e7439089a054d6feaad347</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
+        <sys_scope_delete display_value="">68a191ec272a4b2caf201bd1ec858110</sys_scope_delete>
+        <sys_update_name>sys_security_acl_02e2fee783e7439089a054d6feaad3df</sys_update_name>
+        <sys_update_version display_value="sys_security_acl_02e2fee783e7439089a054d6feaad3df">c2e2322b83e7439089a054d6feaad31d</sys_update_version>
+        <sys_updated_by>Aqib</sys_updated_by>
+        <sys_updated_on>2026-10-01 22:56:28</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

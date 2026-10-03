@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_action_type_definition">
+    <sys_hub_action_type_definition action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <action_status/>
+        <action_template/>
+        <active>true</active>
+        <annotation>One reusable Action does every send in both directions. It builds the JSON safely, posts through the alias with retries, and checks the answer. It has the same name and job as the Remote Instance Spoke action, so it can be swapped later</annotation>
+        <attributes>{labelCacheCleanUpExecuted=true}</attributes>
+        <authored_on_release_version>29000</authored_on_release_version>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <compiler_build/>
+        <copied_from/>
+        <copied_from_name/>
+        <description>One reusable Action does every send in both directions. It builds the JSON safely, posts through the alias with retries, and checks the answer. It has the same name and job as the Remote Instance Spoke action, so it can be swapped later</description>
+        <flow_priority/>
+        <ih_action>false</ih_action>
+        <internal_name>servicenowremoteinstance_custom</internal_name>
+        <label_cache/>
+        <latest_snapshot/>
+        <master_snapshot/>
+        <master_snapshot_digest/>
+        <name>ServiceNowRemoteInstance (Custom)</name>
+        <natlang/>
+        <outputs/>
+        <pre_compiled>false</pre_compiled>
+        <state>draft</state>
+        <sys_class_name>sys_hub_action_type_definition</sys_class_name>
+        <sys_created_by>Aqib</sys_created_by>
+        <sys_created_on>2026-10-02 12:41:58</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d1c07d3b83a7079089a054d6feaad3fb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ServiceNowRemoteInstance (Custom)</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
+        <sys_update_name>sys_hub_action_type_definition_d1c07d3b83a7079089a054d6feaad3fb</sys_update_name>
+        <sys_updated_by>Aqib</sys_updated_by>
+        <sys_updated_on>2026-10-02 12:41:58</sys_updated_on>
+        <system_level>false</system_level>
+        <type/>
+    </sys_hub_action_type_definition>
+    <sys_translated_text action="delete_multiple" query="documentkey=d1c07d3b83a7079089a054d6feaad3fb"/>
+    <sys_variable_value action="delete_multiple" query="document_key=d1c07d3b83a7079089a054d6feaad3fb"/>
+    <sys_hub_step_instance action="delete_multiple" query="action=d1c07d3b83a7079089a054d6feaad3fb"/>
+    <sys_hub_action_input action="delete_multiple" query="model=d1c07d3b83a7079089a054d6feaad3fb"/>
+    <sys_hub_action_output action="delete_multiple" query="model=d1c07d3b83a7079089a054d6feaad3fb"/>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=d1c07d3b83a7079089a054d6feaad3fb"/>
+    <sys_hub_action_status_metadata action="delete_multiple" query="action_type_id=d1c07d3b83a7079089a054d6feaad3fb"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_action_input_d1c07d3b83a7079089a054d6feaad3fb"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_action_output_d1c07d3b83a7079089a054d6feaad3fb"/>
+    <sys_hub_action_plan action="delete_multiple" query="action_id=d1c07d3b83a7079089a054d6feaad3fb"/>
+</record_update>
