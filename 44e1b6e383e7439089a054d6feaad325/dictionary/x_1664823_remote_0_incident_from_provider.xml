@@ -14,7 +14,7 @@
         <element label="Service offering" max_length="150" name="u_service_offering" type="string"/>
         <element label="Impact" max_length="40" name="u_impact" type="string"/>
         <element label="Category" max_length="40" name="u_category" type="string"/>
-        <element label="Receiver sys_id" max_length="40" name="u_receiver_sys_id" type="string"/>
+        <element label="Receiver sys_id" max_length="45" name="u_receiver_sys_id" type="string"/>
         <element label="Description" max_length="4000" name="u_description" type="string"/>
         <element label="Close notes" max_length="4000" name="u_close_notes" type="string"/>
         <element label="Configuration item" max_length="150" name="u_cmdb_ci" type="string"/>
