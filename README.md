@@ -1,396 +1,350 @@
-# Remote Instance Integration for ServiceNow
+# Remote Instance Integration for ServiceNow · v1.0
 
 Bidirectional **Incident integration between two ServiceNow instances** (often called eBonding), built as a scoped application with IntegrationHub, Workflow Studio (Flow Designer) and the Import Set API.
 
-A customer instance sends Incidents to a vendor (provider) instance; the vendor's progress, comments, resolution and attachments flow back automatically, with no duplicate records, no update loops, and a full audit log.
+A customer instance sends Incidents to a vendor (provider) instance; the vendor's progress, comments, resolution and attachments flow back automatically, with **no duplicate records, no update loops, and a full audit log**. Verified end to end between two Personal Developer Instances on the Australia release; all 13 test scenarios pass.
 
-> The outbound Actions are named and shaped like the **ServiceNow Remote Instance Spoke** actions, so the app can switch to the spoke on instances that have an Integration Hub subscription, without redesign.
+> The outbound Actions are named and shaped like the **ServiceNow Remote Instance Spoke** actions, so the app can switch to the spoke on instances with an Integration Hub subscription, without redesign.
 
 ---
 
 ## Table of contents
 
-1. [Features](#features)  
-2. [Architecture](#architecture)  
-3. [What syncs, and what does not](#what-syncs-and-what-does-not)  
-4. [Prerequisites](#prerequisites)  
-5. [Installation overview](#installation-overview)  
-6. [Step 1 – Prepare both instances](#step-1--prepare-both-instances-global-scope)  
-7. [Step 2 – Install the app on both instances](#step-2--install-the-app-on-both-instances)  
-8. [Step 3 – Configure the Customer instance](#step-3--configure-the-customer-instance)  
-9. [Step 4 – Configure the Provider instance](#step-4--configure-the-provider-instance)  
-10. [Step 5 – Verify](#step-5--verify)  
-11. [Test scenarios](#test-scenarios)  
-12. [Troubleshooting](#troubleshooting)  
-13. [Security](#security)  
-14. [Application contents](#application-contents)  
-15. [Uninstall / rollback](#uninstall--rollback)  
+1. [Features](#features)
+2. [Architecture](#architecture)
+3. [What syncs, and what does not](#what-syncs-and-what-does-not)
+4. [Design decisions](#design-decisions)
+5. [Prerequisites](#prerequisites)
+6. [What travels how](#what-travels-how)
+7. [Installation](#installation)
+8. [Verify](#verify)
+9. [Test results](#test-results)
+10. [Lessons learned during the build](#lessons-learned-during-the-build)
+11. [Updating an installed instance](#updating-an-installed-instance)
+12. [Troubleshooting](#troubleshooting)
+13. [Security](#security)
+14. [Application contents](#application-contents)
+15. [Uninstall / rollback](#uninstall--rollback)
 16. [Version history](#version-history)
 
 ---
 
 ## Features
 
-- **Create and update with one call** – the Import Set API with a transform map that **coalesces on Correlation ID**, so a retry never creates a duplicate.  
-- **Bidirectional** – details go Customer → Provider; state, resolution, comments and attachments go both ways as designed.  
-- **Loop prevention** – every Flow triggers only on the fields it owns, and changes written by the integration user are never sent back.  
-- **Reusable outbound Actions** – one Action for every record send, one for attachments; JSON is built with `JSON.stringify`, calls go through a Connection & Credential Alias with a retry policy, and responses are validated.  
-- **Centralized logging** – one Subflow writes every success and failure to the **Remote Sync Log** table, adds a work note with a clickable link on failure, and a notification emails the admins.  
-- **Secure by default** – OAuth 2.0 **Client Credentials**, API access limited by auth scope, web-service-only integration user with least-privilege roles, and no secrets in Git.  
-- **Spoke-compatible** – same Action and alias names as the Remote Instance Spoke.
+- **Create and update with one call** – Import Set API with transform maps that **coalesce on Correlation ID**, so a retry or a repeated message never creates a duplicate.
+- **Bidirectional** – details go Customer → Provider; state and resolution go Provider → Customer; comments and attachments go both ways.
+- **Loop prevention** – every trigger listens only to the fields it owns and ignores changes written by the integration user.
+- **Reusable, spoke-compatible Actions** – one Action for every record send, one for attachments; JSON built with `JSON.stringify`, calls through a Connection & Credential Alias with a retry policy, responses validated.
+- **Centralized logging** – one Subflow writes every success and failure to **Remote Sync Log**; on failure it adds a work note with a clickable link to the log row, and a notification emails the admins.
+- **Secure by default** – OAuth 2.0 **Client Credentials**, API access limited by auth scope, web-service-only integration user with least-privilege roles, no secrets in Git.
 
 ## Architecture
 
- CUSTOMER instance                                   PROVIDER instance
+```text
+ CUSTOMER instance                                     PROVIDER instance
+ ─────────────────                                     ─────────────────
+ Incident (assigned to Vendor Support)                 Incident (Customer Escalations)
+   │ Flow:       Send Incident Details                   ▲
+   │ BR+Subflow: Send Comment                            │ transform map: create or update
+   │ Flow:       Send Attachment                         │ (coalesce on Correlation ID)
+   ▼                                                     │
+ Action: Create or Update Remote Record ── POST ──►  staging table Incident From Customer
+         Using Import Set                    /api/now/import/…
 
- ─────────────────                                   ─────────────────
+ staging table Incident From Provider  ◄── POST ──  Action (same app)
+   │ transform map: update only                          ▲ Flow:       Send Progress
+   │ (coalesce on Correlation ID, inserts ignored)       │ BR+Subflow: Send Comment
+   ▼                                                     │ Flow:       Send Attachment
+ Incident                                              Incident
 
- Incident (Vendor Support)                           Incident (Customer Escalations)
-
-   │ Flow A: Send Incident Details                     ▲
-
-   │ BR \+ Subflow: Send Comment         POST /api/now/import/\<incident\_from\_customer\>
-
-   │ Flow D: Send Attachment  ───────────────────────► Staging table ─► Transform map
-
-   ▼                                                    (coalesce on Correlation ID,
-
- Action: Create or Update Remote                         create or update)
-
- Record Using Import Set
-
-                                                     Incident
-
- Staging table ◄─ Transform map  ◄─────────────────    │ Flow C: Send Progress
-
- (coalesce on Correlation ID,      POST /api/now/import│ BR \+ Subflow: Send Comment
-
-  update only, inserts ignored)    /\<incident\_from\_provider\>  Flow D: Send Attachment
-
- ▼                                                     ▼
-
- Remote Sync Log  (both instances, via Subflow "Remote Sync: Write Log")
+ Both instances: Subflow "Remote Sync: Write Log" → Remote Sync Log + failure email
+```
 
 The **same app** is installed on both instances. Four system properties tell each instance whether it is the Customer or the Provider, whom it calls, and where it posts.
 
 ## What syncs, and what does not
 
 | Incident field | Synced | Direction | How |
-| :---- | :---- | :---- | :---- |
-| Short description, Description | Yes | Customer → Provider | Text |
-| Caller | Yes | Customer → Provider | Caller's **email**, matched by email |
+| --- | --- | --- | --- |
+| Short description, Description | Yes | Customer → Provider | Text (quotes, line breaks, non-English text preserved) |
+| Caller | Yes | Customer → Provider | Caller's **email**, matched by email on the receiver |
 | Impact, Urgency | Yes | Customer → Provider | Priority is recalculated on the receiver |
-| Category, Subcategory | Yes | Customer → Provider | Unknown values are ignored |
-| Service, Service offering, Configuration item | Yes, by name | Customer → Provider | Matched by name; names written to a work note on creation |
+| Category, Subcategory | Yes | Customer → Provider | Unknown values ignored |
+| Service, Service offering, Configuration item | Yes, by name | Customer → Provider | Matched by name; unmatched names are written to a work note, never created |
 | State, Resolution code, Resolution notes | Yes | Provider → Customer | Sent together |
-| Additional comments | Yes | Both | Newest entry only |
-| Attachments | Yes | Both | Attachment API |
+| Additional comments | Yes | Both | Each new comment once, never echoed back |
+| Attachments | Yes | Both | Attachment API, never echoed back |
 | Work notes, Watch list, Work notes list | **Never** | – | Internal to each company |
 | Assignment group, Assigned to | **Never** | – | Each side routes its own work |
 | Priority, Channel, Resolved by, Resolved, SLAs | No | – | Calculated or owned by each instance |
 | Parent incident, Problem, Change request | No | – | Records exist only in one instance |
 
+## Design decisions
+
+| Decision | Why |
+| --- | --- |
+| **Import Set API**, not Table API | Coalesce gives create-or-update in one call; the receiver keeps control of validation and mapping. |
+| **Correlation ID** as the link on both sides | Sys IDs differ per instance; each side stores the partner's sys_id and coalesces on it. |
+| **Choice action = ignore** on reference and choice field maps | Partner data can never create users, CIs, services or choice values. |
+| **OOTB first** | The ServiceNow Remote Instance Spoke was evaluated; it needs an Integration Hub subscription. The custom Actions use the same names and pattern, so swapping later is a one-step change. |
+| **Business Rule + Subflow** for comments | Flow triggers cannot use journal fields; a Business Rule detects *Additional comments changes* declaratively and starts a reusable Subflow asynchronously via `sn_fd.FlowAPI`. |
+| **One logging Subflow** | Success and failure logging, the failure work note and its link live in one place. |
+| **OAuth 2.0 Client Credentials** | Machine-to-machine; no user password stored or sent; tokens are short-lived and renewed automatically. |
+| **Alias in the app, connections in Global** | The Actions only know the alias name; each instance plugs in its own URL and credential, which never reach Git. |
+
 ---
 
 ## Prerequisites
 
-Check every item on **both** instances before installing.
-
-### Platform
+Check every item on **both** instances.
 
 | Requirement | How to check | Why |
-| :---- | :---- | :---- |
-| Two ServiceNow instances (for example two PDIs) | – | One acts as Customer, one as Provider |
-| Admin access on both | – | Setup only; the integration itself runs as a non-admin user |
-| Same family release on both (developed and tested on **Australia**) | *System Diagnostics → Stats* or property `glide.buildtag` | Source-control import between different releases can fail |
-| **Flow Designer \- Designer** plugin (`sn_flow_designer`) **29.2.x or later** | *All → Plugins → Flow Designer \- Designer* | Required for the permanent fix of the *changes* operator defect |
-| IntegrationHub **REST step** available | Workflow Studio → new Action → a **REST** step can be added | Used by both outbound Actions (available on PDIs) |
+| --- | --- | --- |
+| Two ServiceNow instances on the **same family release** (built and tested on **Australia**) | *System Diagnostics → Stats* | Source-control import between releases can fail |
+| Admin access | – | Setup only; the integration runs as a non-admin user |
+| **Flow Designer - Designer** (`sn_flow_designer`) **29.2.x or later** | *All → Plugins* | Needed for the permanent fix of PRB2005619 |
+| IntegrationHub **REST step** | Workflow Studio → new Action → a REST step can be added | Used by both Actions (available on PDIs) |
 | **OAuth 2.0** plugin active | *System OAuth → Application Registry* exists | Instance-to-instance authentication |
-| GitHub account, repository access and a Personal Access Token (`repo` scope) | – | To import the app from source control |
+| GitHub account and a Personal Access Token (`repo` scope) | – | To install the app from source control |
 
-### Global prerequisite update set (Australia release only)
+### Global prerequisite update set (Australia release)
 
-On the Australia release, the *changes*, *changes to* and *changes from* operators are missing from Workflow Studio trigger conditions (**PRB2005619**). The app's Flows need them.
+On the Australia release, the *changes*, *changes to* and *changes from* operators are missing from Workflow Studio trigger conditions (**PRB2005619**). The Flows need them.
 
-1. Download `Flow Designer – Enable "changes" Operators on Incident Fields (PRB2005619)` from this repository's **Releases** (v1.0 assets).  
-2. *System Update Sets → Retrieved Update Sets → Import Update Set from XML* → upload → **Preview** → resolve any collisions → **Commit**.
+1. Download `Flow Designer – Enable "changes" Operators on Incident Fields (PRB2005619)` from this repository's **Releases** (v1.0 assets).
+2. *System Update Sets → Retrieved Update Sets → Import Update Set from XML* → **Preview** → resolve collisions → **Commit**.
 
-What it does: adds `extended_operators=VALCHANGES;CHANGESFROM;CHANGESTO` to the dictionary entries of `short_description`, `description`, `impact`, `urgency`, `state`, `close_notes`, `cmdb_ci`, `business_service`, `service_offering` (Task) and `category`, `subcategory`, `close_code` (Incident). Existing attributes are kept. It only adds condition-builder operators; no data or behaviour changes.
+It adds `extended_operators=VALCHANGES;CHANGESFROM;CHANGESTO` to the dictionary entries of `short_description`, `description`, `impact`, `urgency`, `state`, `close_notes`, `cmdb_ci`, `business_service`, `service_offering` (Task) and `category`, `subcategory`, `close_code` (Incident). Existing attributes are kept; only condition-builder operators are added. These records are **Global**, so they cannot be part of the scoped app. Skip this once PRB2005619 is fixed on your instance.
 
-> These records belong to the **Global** scope, so they cannot be part of the scoped app. Skip this step once PRB2005619 is fixed on your instance.
+## What travels how
 
-### Values you will need
+| Part | Contents | Moved by |
+| --- | --- | --- |
+| **App** | Tables, transform maps, properties, alias, Actions, Flows, Subflows, Business Rule, notification, cross-scope privileges | GitHub (source control) |
+| **Global prerequisites** | PRB2005619 dictionary attributes | Update set XML (release asset) |
+| **Per-instance configuration** | Integration user, groups, OAuth clients, outbound OAuth profiles, credentials, connections, property values, role grants, form layout, index check | **By hand**, following this README |
 
-| Value | Customer instance | Provider instance |
-| :---- | :---- | :---- |
-| Instance URL | `https://<customer>.service-now.com` | `https://<provider>.service-now.com` |
-| System name (property) | `CUSTOMER-<customer>` | `PROVIDER-<provider>` |
-| OAuth client for the partner (created in Step 1\) | *Provider Instance Client* | *Customer Instance Client* |
-
----
-
-## Installation overview
-
-| Step | Customer | Provider | Scope |
-| :---- | :---- | :---- | :---- |
-| 1\. Prepare: users, groups, OAuth endpoints, properties | ✔ | ✔ | Global |
-| 2\. Install the app from GitHub | ✔ | ✔ | App |
-| 3\. Configure Customer: connection, properties, form, roles | ✔ |  | Global |
-| 4\. Configure Provider: connection, properties, form, roles, index |  | ✔ | Global |
-| 5\. Verify | ✔ | ✔ | – |
-
-> Always do Step 1, 3 and 4 with the **Application picker set to Global**, so users, credentials and connections are never captured in the app or committed to Git.
+OAuth clients, profiles, credentials and connections are never moved with update sets or Git: their secrets are encrypted with each instance's own key, and their URLs differ per instance.
 
 ---
 
-## Step 1 – Prepare both instances (Global scope)
+## Installation
 
-### 1.1 Integration user (both)
+> **Application picker:** use **Global** for users, groups, OAuth, credentials and connections; use **Remote Instance Integration** only when editing the app's own records (for example the property values).
 
-*User Administration → Users → New*
+**Naming rule** for per-instance records: name each from the point of view of the instance it lives on. *Inbound* = who may call me; *Outbound* = whom I call.
+
+| Record | On the Customer | On the Provider |
+| --- | --- | --- |
+| Inbound OAuth client | `Inbound from Provider (<provider>)` | `Inbound from Customer (<customer>)` |
+| Outbound OAuth profile | `Outbound to Provider (<provider>)` | `Outbound to Customer (<customer>)` |
+| OAuth 2.0 credential | `Outbound to Provider – Credential` | `Outbound to Customer – Credential` |
+| HTTP(s) connection | `Outbound to Provider – Connection` | `Outbound to Customer – Connection` |
+
+The outbound profile **Outbound to X** always gets the Client ID and secret of the **Inbound from …** client that lives on **X**.
+
+### Step 1 – Prepare both instances (Global)
+
+**1.1 Integration user** – *User Administration → Users → New*: User ID `integration.inbound`, **Web service access only** ✓, no password needed, roles `import_set_loader`, `import_transformer`, `itil`.
+
+**1.2 Groups**
+
+| Group | Instance | Members / roles |
+| --- | --- | --- |
+| Vendor Support | Customer | No members (assigning a ticket here sends it to the vendor) |
+| Customer Escalations | Provider | Vendor agents with `itil` (queue for incoming tickets) |
+| Integration Admins | Both | People who support the integration (log role added in Step 3/4) |
+
+**1.3 Enable inbound Client Credentials** – *sys_properties.list*: `glide.oauth.inbound.client.credential.grant_type.enabled` = **true** (create as *true \| false* if missing).
+
+**1.4 Inbound OAuth client** – *Machine Identity Console → Inbound integrations → New integration → **OAuth - Client credentials grant***:
 
 | Field | Value |
-| :---- | :---- |
-| User ID | `integration.inbound` |
-| First / Last name | Integration / Inbound |
-| Web service access only | ✔ |
-| Password | Not needed (OAuth Client Credentials) |
-| Roles | `import_set_loader`, `import_transformer`, `itil` |
+| --- | --- |
+| Name | per the naming table |
+| Provider name | the partner, for example `ServiceNow Provider (<provider>)` |
+| OAuth application user | `integration.inbound` |
+| Auth scope | create `remote_instance_integration`, limited to **Import Set API** and **Attachment API** |
+| Allow access only to APIs in selected scope | ✓ |
 
-The partner instance always acts as this user. The Flows ignore changes made by it, which prevents update loops.
+Copy the **Client ID** and **Client secret** for the partner's Step 3/4.
 
-### 1.2 Groups
+**1.5 Global prerequisite update set** – apply it (see Prerequisites).
 
-| Group | Instance | Members | Roles |
-| :---- | :---- | :---- | :---- |
-| Vendor Support | Customer | None needed | None |
-| Customer Escalations | Provider | Vendor agents (`itil`) | `itil` |
-| Integration Admins | Both | People who support the integration | Remote Sync Log role (after Step 2\) |
+### Step 2 – Install the app (both)
 
-On the Provider, copy the **sys\_id** of *Customer Escalations*; it is needed in Step 4\.
+1. *Credentials → New → Basic Auth*: name `GitHub`, user = GitHub username, password = Personal Access Token.
+2. **ServiceNow Studio → Import from source control**: repo URL, branch `main`, credential `GitHub`.
+3. Confirm **Remote Instance Integration** (scope `x_1664823_remote_0`) contains the [application contents](#application-contents).
 
-### 1.3 Enable inbound OAuth Client Credentials (both)
+### Step 3 – Configure the Customer (Global)
 
-*sys\_properties.list* → `glide.oauth.inbound.client.credential.grant_type.enabled` \= **true** (create it as type *true | false* if missing).
-
-### 1.4 Inbound OAuth client for the partner (both)
-
-*Machine Identity Console → Inbound integrations → New integration → **OAuth \- Client credentials grant***
-
-| Field | On the Customer | On the Provider |
-| :---- | :---- | :---- |
-| Name | `Provider Instance Client` | `Customer Instance Client` |
-| Provider name | `ServiceNow Provider (<provider>)` | `ServiceNow Customer (<customer>)` |
-| OAuth application user | `integration.inbound` | `integration.inbound` |
-| Auth scope | Create `remote_instance_integration`, limited to **Import Set API** and **Attachment API** | Same |
-| Allow access only to APIs in selected scope | ✔ | ✔ |
-
-Save and copy the **Client ID** and **Client secret**. The Customer's pair is used on the Provider (Step 4), and the Provider's pair on the Customer (Step 3).
-
-### 1.5 Global prerequisite update set
-
-Apply it now if your instance is on the Australia release (see [Prerequisites](#global-prerequisite-update-set-australia-release-only)).
-
----
-
-## Step 2 – Install the app on both instances
-
-1. Application picker **Global** → *Connections & Credentials → Credentials → New → Basic Auth Credentials*: name `GitHub`, user \= GitHub username, password \= Personal Access Token.  
-2. **ServiceNow Studio → Import from source control**: repository URL, branch `main`, credential `GitHub` → **Import**.  
-3. Confirm the app **Remote Instance Integration** (scope `x_1664823_remote_0`) contains the components listed in [Application contents](#application-contents).
-
->   
-> Never edit the app on an instance that only consumes it. Make changes on the development instance, commit, and use **Apply Remote Changes** elsewhere.
-
----
-
-## Step 3 – Configure the Customer instance
-
-All in **Global** scope.
-
-### 3.1 OAuth connection to the Provider
-
-1. *System OAuth → Application Registry → New → **Connect to a third party OAuth Provider \- Outbound***
+**3.1 Outbound OAuth profile** – *System OAuth → Application Registry → New → Connect to a third party OAuth Provider - Outbound*:
 
 | Field | Value |
-| :---- | :---- |
-| Name | `Provider Instance OAuth` |
-| Client ID / Client Secret | The **Provider's** pair (*Customer Instance Client*) |
+| --- | --- |
+| Name | `Outbound to Provider (<provider>)` |
+| Client ID / Client Secret | from **Inbound from Customer (<customer>)** on the **Provider** |
 | Default Grant type | **Client Credentials** |
 | Token URL | `https://<provider>.service-now.com/oauth_token.do` |
+| Accessible from | All application scopes |
+| Other fields | empty / default |
 
-2. *Connections & Credentials → Credentials → New → OAuth 2.0 Credentials*: name `Provider OAuth`, OAuth Entity Profile \= the profile created above → Submit → **Get OAuth Token** (expect *OAuth token flow completed successfully*).  
-3. *Connection & Credential Aliases* → `x_1664823_remote_0.ServiceNowRemoteInstance` → **Connections** → **New → HTTP(s) Connection**:
+**3.2 OAuth 2.0 credential** – *Credentials → New → OAuth 2.0 Credentials*: name `Outbound to Provider – Credential`, OAuth Entity Profile = the profile above, Credential alias **empty** (do not unlock), MID unchecked → Submit → **Get OAuth Token** (expect *completed successfully*).
 
-| Field | Value |
-| :---- | :---- |
-| Name | `Provider Instance` |
-| Credential | `Provider OAuth` |
-| Connection URL | `https://<provider>.service-now.com` |
+**3.3 Connection** – open alias `x_1664823_remote_0.ServiceNowRemoteInstance` → **Connections → New → HTTP(s) Connection**: name `Outbound to Provider – Connection`, credential from 3.2, URL `https://<provider>.service-now.com`, Active ✓, MID unchecked. Create it in **Global**; only one connection may be active per alias.
 
-### 3.2 System properties
-
-*sys\_properties.list*, Name starts with `x_1664823_remote_0`:
+**3.4 Properties** (picker: Remote Instance Integration)
 
 | Property | Customer value |
-| :---- | :---- |
+| --- | --- |
 | `x_1664823_remote_0.local_system_name` | `CUSTOMER-<customer>` |
 | `x_1664823_remote_0.partner_system_name` | `PROVIDER-<provider>` |
 | `x_1664823_remote_0.partner_staging_table` | `x_1664823_remote_0_incident_from_customer` |
 | `x_1664823_remote_0.default_assignment_group` | *(empty)* |
 
-### 3.3 Form, roles, notification
+**3.5 Form, roles, notification**
+- Incident form → **Configure → Related Lists** → add **Remote Sync Log → Incident**.
+- *Integration Admins* → role **Remote Sync Log** (`x_1664823_remote_0.remote_sync_log_user` or similar).
+- `integration.inbound` → role for staging table **Incident From Provider** (without it the Provider's calls get **403**).
+- Notification **Remote sync failed** → re-select **Integration Admins**.
 
-- Incident form → **Configure → Related Lists** → add **Remote Sync Log → Incident**.  
-- *Integration Admins* group → **Roles** → add the Remote Sync Log role (`x_1664823_remote_0.*`).  
-- Notification **Remote sync failed** → *Who will receive* → re-select **Integration Admins** (group sys\_ids differ per instance).
+### Step 4 – Configure the Provider (Global unless noted)
 
----
+**4.1–4.3** – as 3.1–3.3, with: profile `Outbound to Customer (<customer>)` using the Client ID / secret of **Inbound from Provider (<provider>)** on the **Customer**, token URL `https://<customer>.service-now.com/oauth_token.do`, credential `Outbound to Customer – Credential`, connection `Outbound to Customer – Connection` with URL `https://<customer>.service-now.com`.
 
-## Step 4 – Configure the Provider instance
-
-All in **Global** scope.
-
-### 4.1 OAuth connection to the Customer
-
-Same as 3.1, with:
-
-| Item | Provider value |
-| :---- | :---- |
-| OAuth profile | `Customer Instance OAuth`, Client ID / secret \= the **Customer's** pair (*Provider Instance Client*), Client Credentials, Token URL `https://<customer>.service-now.com/oauth_token.do` |
-| OAuth 2.0 Credential | `Customer OAuth` → **Get OAuth Token** |
-| Connection on `x_1664823_remote_0.ServiceNowRemoteInstance` | `Customer Instance`, URL `https://<customer>.service-now.com` |
-
-### 4.2 System properties
+**4.4 Properties** (picker: **Remote Instance Integration**, not Global)
 
 | Property | Provider value |
-| :---- | :---- |
+| --- | --- |
 | `x_1664823_remote_0.local_system_name` | `PROVIDER-<provider>` |
 | `x_1664823_remote_0.partner_system_name` | `CUSTOMER-<customer>` |
 | `x_1664823_remote_0.partner_staging_table` | `x_1664823_remote_0_incident_from_provider` |
-| `x_1664823_remote_0.default_assignment_group` | sys\_id of *Customer Escalations* |
+| `x_1664823_remote_0.default_assignment_group` | sys_id of *Customer Escalations* |
 
-### 4.3 Form, roles, notification, index
-
-- Add the **Remote Sync Log → Incident** related list, give the log role to *Integration Admins*, and re-select the group in the notification (as in 3.3).  
-- **Index:** *System Definition → Tables → Incident → Database Indexes*. If there is no index on `correlation_id`, open transform map *Incident From Customer* → related link **Index Coalesce Fields**. Do the same check on the Customer for *Incident From Provider*.
-
----
-
-## Step 5 – Verify
-
-### Smoke test (one Action call)
-
-On the **Customer**: Workflow Studio → Action **Create or Update Remote Record Using Import Set** → **Test**:
-
-| Input | Value |
-| :---- | :---- |
-| sender\_sys\_id | sys\_id of a test Incident |
-| sender\_number | its number |
-| short\_description | `Smoke test` |
-| caller\_email | an email that exists on both instances (for example `abel.tuter@example.com`) |
-| impact / urgency | `3` / `3` |
-
-Expected: `status_code = 201`, `import_status = inserted`, a Provider number in `remote_number`. Run again with the same sys\_id → `import_status = updated` with the **same** number. Close the smoke-test Incident on the Provider afterwards.
-
-### End to end
-
-Assign a Customer Incident to **Vendor Support**. Expect within seconds: a Provider Incident in *Customer Escalations*, the Customer Incident's **Correlation ID** filled with a work note *Vendor ticket created: INC…*, and a **Success** row in Remote Sync Log.
+**4.5 Form, roles, notification, index**
+- Related list, *Integration Admins* log role and notification group, as in 3.5.
+- `integration.inbound` → role for staging table **Incident From Customer**.
+- *System Definition → Tables → Incident → Database Indexes*: an index on `correlation_id` must exist; otherwise use **Index Coalesce Fields** on transform map *Incident From Customer*.
 
 ---
 
-## Test scenarios
+## Verify
 
-- [ ] **Create** – assign to Vendor Support → one Provider Incident, Correlation ID on both sides, log \= inserted.  
-- [ ] **Caller lookup** – caller with the same email on both → Caller filled.  
-- [ ] **Update** – change urgency on the Customer → Provider updated, no new Incident, log \= updated.  
-- [ ] **Customer comment** → appears once on the Provider.  
-- [ ] **Vendor comment** → appears once on the Customer.  
-- [ ] **No echo** – comments never bounce back.  
-- [ ] **Work notes stay private** – never sent.  
-- [ ] **Resolve** – Provider resolves with code and notes → Customer Resolved with the same values.  
-- [ ] **Not assigned to vendor** → nothing sent.  
-- [ ] **Special characters** – quotes, line breaks, non-English text arrive exactly as typed.  
-- [ ] **Attachment** – sent once in each direction, never bounced back.  
-- [ ] **Partner down** – Provider hibernating → retries, then log \= Failed, work note with link, email sent.  
-- [ ] **Bad credential** – wrong client secret → 401 logged as Failed.
+**Smoke test (one Action call, on the Customer)** – Workflow Studio → Action **Create or Update Remote Record Using Import Set** → **Test** with a test Incident's sys_id and number, `short_description` `Smoke test`, `caller_email` that exists on both instances, impact/urgency `3`.
 
----
+| Run | Expected |
+| --- | --- |
+| First | `status_code 201`, `import_status inserted`, a Provider number |
+| Same inputs again | `import_status unchanged`, same number |
+| Changed short description | `import_status updated`, same number |
+
+**End to end** – assign a Customer Incident to **Vendor Support**: a Provider Incident appears in *Customer Escalations*, the Customer Incident gets a Correlation ID and the work note *Vendor ticket created: INC…*, and Remote Sync Log shows **Success**.
+
+## Test results
+
+All scenarios passed on v1.0 (Customer dev311022 ↔ Provider dev353640, Australia release).
+
+| # | Scenario | Result |
+| --- | --- | --- |
+| 1 | Create: assign to Vendor Support → Provider Incident in Customer Escalations, linked both ways | ✅ |
+| 2 | Caller matched by email | ✅ |
+| 3 | Update: no new Incident, log *updated* | ✅ |
+| 4 | Customer comment → Provider, once | ✅ |
+| 5 | Vendor comment → Customer, once | ✅ |
+| 6 | No echo of comments | ✅ |
+| 7 | Work notes stay private | ✅ |
+| 8 | Vendor state and resolution (code + notes) → Customer | ✅ |
+| 9 | Incident not assigned to Vendor Support → nothing sent | ✅ |
+| 10 | Quotes, line breaks and Urdu text preserved | ✅ |
+| 11 | Attachment sent once in each direction, no echo | ✅ |
+| 12 | Wrong client secret → Failed log, work note with link, email | ✅ |
+| 13 | Secret restored → Success | ✅ |
+
+## Lessons learned during the build
+
+| Issue found | Resolution |
+| --- | --- |
+| *changes* operators missing in Flow trigger conditions (Australia, PRB2005619) | Permanent fix from the ServiceNow KB: Flow Designer 29.2.x + `extended_operators` dictionary attribute, shipped as a Global prerequisite update set |
+| Loop guard placed inside an OR group of the trigger condition caused repeated sends | Rebuilt conditions as *scope* **and** *not changed by integration.inbound* **and** (*field changes* **or** …) |
+| Same data sent twice produced *ignored: No field values changed* and false failure alerts | Treated as `import_status = unchanged` (success); only real rejections fail |
+| Journal fields are not available in Flow trigger conditions | Business Rule with a declarative *Additional comments changes* condition starts a Subflow via `sn_fd.FlowAPI` |
+| A connection accidentally created in the app scope reached Git and the Provider | Removed from the app; connections are created only in Global, per instance |
+| Pull from repository reset the Provider's property values | Properties edited in the app scope, so a pull can stash and re-apply them |
+| OAuth `access_denied` | Client ID copied from the wrong instance; fixed by the inbound/outbound naming rule |
+| Action Status → Message pill greyed out in Error Handlers | Used *Top Level Catch → Error Status → Message*, which carries the error of whichever step failed |
+
+## Updating an installed instance
+
+1. Change the app **only on the development instance** (Customer), then **Commit Changes**. Before committing, check *All update sets*: runtime cross-scope privileges are often recorded in *Default*.
+2. On the Provider: **ServiceNow Studio → Source control → Pull from repository** (classic Studio: *Apply Remote Changes*).
+3. When the pull lists uncommitted changes (the Crypto Module Key Policy and the four property values), choose **Stash local changes** – never *Discard* – then **apply the stash** after the pull.
+4. Re-check the Provider property values and run **Get OAuth Token** once.
+5. **Never commit from the Provider.**
 
 ## Troubleshooting
 
 | Symptom | Likely cause | Fix |
-| :---- | :---- | :---- |
-| *Unable to load connection with alias ID* | No connection on the alias on this instance | Step 3.1 / 4.1 |
-| **Get OAuth Token** fails | Client-credentials property not true on the partner, wrong ID/secret, or no OAuth application user | Step 1.3 / 1.4 |
-| HTTP **401** | Expired or wrong client secret | Rotate the secret on the partner, update the outbound profile, Get OAuth Token |
-| HTTP **403** | Auth scope missing an API, or missing role on `integration.inbound` | Auth scope must include Import Set API and Attachment API; roles per Step 1.1 |
-| HTTP **400** *Invalid table* | Wrong `partner_staging_table` value | Step 3.2 / 4.2 |
-| `import_status = ignored` on the Customer | Provider sent an update for an Incident that is not linked | Expected protection: the vendor cannot create customer Incidents |
-| Payload contains only `u_sender_system` | Build payload Script step input variables not mapped | Map each Script step input to its Action input pill; Save and Publish the Action |
-| Caller empty on the Provider | No user with that email on the Provider, or field map missing *Referenced value field name \= email* | Check the user and the transform map |
-| *changes* operator missing in Flow conditions | PRB2005619 on Australia | Apply the Global prerequisite update set |
-| Duplicates / loops | An old test integration still active, or old correlation data on test Incidents | Deactivate old flows; clear Correlation ID / display on old test records |
+| --- | --- | --- |
+| *Unable to load connection with alias ID* | No active connection on the alias on this instance | Step 3.3 / 4.3 |
+| Get OAuth Token: `access_denied` | Client ID/secret from the wrong client or instance; client-credentials property not true on the partner; no OAuth application user | Re-copy from the partner's *Inbound from …* client; check Step 1.3 / 1.4 |
+| HTTP 401 | Wrong or rotated client secret | Update the outbound profile, Get OAuth Token |
+| HTTP 403 | Auth scope missing an API, or `integration.inbound` lacks the staging-table role | Step 1.4, 3.5 / 4.5 |
+| HTTP 400 *Invalid table* | Wrong `partner_staging_table` | Step 3.4 / 4.4 |
+| Payload contains only `u_sender_system` | Build-payload Script step input variables not mapped | Map each Script step input to its Action input pill; Save and Publish |
+| Provider Incidents arrive with an empty Assignment group | Provider properties reset by a pull | Re-apply Step 4.4 in the app scope; stash on future pulls |
+| Repeated sends / duplicate attachments | Loop guard not ANDed in a trigger condition | See Lessons learned |
+| *changes* operator missing | PRB2005619 | Apply the Global prerequisite update set |
 
-Every message, success or failure, is in **Remote Sync Log** (related list on the Incident). Failures also add a work note with a link to the log row and email *Integration Admins*.
-
----
+Every message, success or failure, is in **Remote Sync Log** (related list on the Incident).
 
 ## Security
 
 | Control | Setting |
-| :---- | :---- |
-| Authentication | OAuth 2.0 **Client Credentials**; short-lived tokens, no user password stored or sent |
+| --- | --- |
+| Authentication | OAuth 2.0 Client Credentials; short-lived tokens; no user password stored or sent |
 | API restriction | Auth scope limited to Import Set API and Attachment API |
-| Integration user | `integration.inbound`, web service access only, roles `import_set_loader`, `import_transformer`, `itil` |
-| Secrets | Held in Global-scope credentials behind a Connection & Credential Alias; never in the app or Git |
-| Data shared | No work notes, watch lists or internal fields cross the boundary |
-| Flows | Run as System user so behaviour does not depend on who changed the Incident |
-
----
+| Integration user | Web service access only; `import_set_loader`, `import_transformer`, `itil`, one staging-table role |
+| Secrets | Global-scope credentials behind a Connection & Credential Alias; never in the app, update sets or Git |
+| Data shared | No work notes, watch lists or internal fields |
+| Flows | Run as System user |
 
 ## Application contents
 
-Scope: `x_1664823_remote_0` – **Remote Instance Integration**
+Scope `x_1664823_remote_0` – **Remote Instance Integration**
 
 | Type | Name | Runs on |
-| :---- | :---- | :---- |
-| Table (staging) | Incident From Customer | Provider (receives) |
-| Table (staging) | Incident From Provider | Customer (receives) |
-| Transform map | Incident From Customer → Incident (create or update, coalesce on Correlation ID) | Provider |
-| Transform map | Incident From Provider → Incident (update only, coalesce on Correlation ID) | Customer |
+| --- | --- | --- |
+| Table (staging) | Incident From Customer | Provider |
+| Table (staging) | Incident From Provider | Customer |
+| Transform map | Incident From Customer → Incident (create or update) | Provider |
+| Transform map | Incident From Provider → Incident (update only, inserts ignored) | Customer |
 | Table | Remote Sync Log | Both |
-| System properties | `local_system_name`, `partner_system_name`, `partner_staging_table`, `default_assignment_group` | Both, values per instance |
-| Connection & Credential Alias | `ServiceNowRemoteInstance` | Both, connection per instance |
+| System properties | `local_system_name`, `partner_system_name`, `partner_staging_table`, `default_assignment_group` | Both (values per instance) |
+| Connection & Credential Alias | `ServiceNowRemoteInstance` | Both (connection per instance) |
 | Action | Create or Update Remote Record Using Import Set | Both |
 | Action | Copy Attachment To Remote Instance | Both |
 | Flow | Remote Sync: Send Incident Details | Customer |
-| Business Rule \+ Subflow | Remote Sync: Send Comment | Both |
 | Flow | Remote Sync: Send Progress | Provider |
 | Flow | Remote Sync: Send Attachment | Both |
+| Business Rule + Subflow | Remote Sync: Send Comment | Both |
 | Subflow | Remote Sync: Write Log | Both |
 | Notification | Remote sync failed | Both |
-
-Not in the app (per instance, Global): integration user, groups, OAuth clients, credentials, connections, form layouts, role grants, indexes, and the PRB2005619 prerequisite update set.
-
----
+| Cross-scope privileges | incident (write), properties, ScopedGlideElement, ImportLog.warn, ScriptableFlowRunner | Both |
 
 ## Uninstall / rollback
 
-1. Deactivate the Flows and the Business Rule *Remote Sync: Send Comment* on both instances.  
-2. Remove the app (*System Applications → My Company Applications* → app → **Uninstall**) or delete it from the instance.  
-3. Delete the Global records: OAuth clients and outbound profiles, credentials, connections, `integration.inbound`, groups.  
+1. Deactivate the Flows and the Business Rule on both instances.
+2. Uninstall the app (*System Applications → My Company Applications*).
+3. Delete the Global records: OAuth clients and profiles, credentials, connections, `integration.inbound`, groups.
 4. To remove the prerequisite: back out the update set, or delete the `extended_operators` entry from the listed dictionary entries.
-
----
 
 ## Version history
 
 | Version | Notes |
-| :---- | :---- |
-| 1.0 | Bidirectional Incident sync: details, progress, comments, attachments; Import Set API with coalesce; OAuth Client Credentials; centralized logging and failure alerts |
+| --- | --- |
+| 1.0 | Bidirectional Incident sync (details, progress, resolution, comments, attachments); Import Set API with coalesce; OAuth Client Credentials; centralized logging and failure alerts; all 13 tests passed |
 
 ---
 
-**Author:** · Raja Aqib   
-**Role:** ServiceNow Developer
+**Author:** <Raja Aqib> · ServiceNow Developer
