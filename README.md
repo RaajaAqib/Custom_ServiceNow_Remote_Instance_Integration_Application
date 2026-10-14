@@ -21,11 +21,12 @@ A customer instance sends Incidents to a vendor (provider) instance; the vendor'
 9. [Test results](#test-results)
 10. [Lessons learned during the build](#lessons-learned-during-the-build)
 11. [Updating an installed instance](#updating-an-installed-instance)
-12. [Troubleshooting](#troubleshooting)
-13. [Security](#security)
-14. [Application contents](#application-contents)
-15. [Uninstall / rollback](#uninstall--rollback)
-16. [Version history](#version-history)
+12. [Backup and rebuild after a PDI is reclaimed](#backup-and-rebuild-after-a-pdi-is-reclaimed)
+13. [Troubleshooting](#troubleshooting)
+14. [Security](#security)
+15. [Application contents](#application-contents)
+16. [Uninstall / rollback](#uninstall--rollback)
+17. [Version history](#version-history)
 
 ---
 
@@ -282,6 +283,74 @@ All scenarios passed on v1.0 (Customer dev311022 ↔ Provider dev353640, Austral
 4. Re-check the Provider property values and run **Get OAuth Token** once.
 5. **Never commit from the Provider.**
 
+## Backup and rebuild after a PDI is reclaimed
+
+Personal Developer Instances are reclaimed after inactivity. Keep three backups so a new pair of instances can be set up in about an hour, without rebuilding the app.
+
+### What is backed up where
+
+| # | Backup | Contents | Where it lives | Secret inside? |
+| --- | --- | --- | --- | --- |
+| 1 | **App (source control)** | Tables, transform maps, properties, alias, Actions, Flows, Subflows, Business Rule, notification, cross-scope privileges | This GitHub repository | No |
+| 2 | **Update set A – PRB2005619 dictionary** | `extended_operators` on 12 Task/Incident fields | XML, attached to Release v1.0 | No |
+| 3 | **Update set B – Global setup (no secrets)** | Inbound client-credentials property, auth scope `remote_instance_integration` and its two REST API Auth Scope records, Incident form related list *Remote Sync Log* | XML, attached to Release v1.0 | No |
+| 4 | **Data XML** | Groups, `integration.inbound`, group members, user and group roles | XML files, attached to Release v1.0 | No |
+| – | **Never backed up** | OAuth clients, outbound OAuth profiles, OAuth 2.0 credentials, connections, GitHub credential, property values | Recreated on every new instance | **Yes** (or instance-specific) |
+
+### Before the instance is reclaimed (on the development / Customer instance)
+
+**1. Commit everything.** ServiceNow Studio → *Source control → Commit changes* must show nothing left to commit (check *All update sets*).
+
+**2. Export update set A.** *System Update Sets → Local Update Sets* → `Flow Designer – Enable "changes" Operators on Incident Fields (PRB2005619)` → State **Complete** → related link **Export to XML**.
+
+**3. Build and export update set B.**
+
+| Step | What to do |
+| --- | --- |
+| a | Application picker **Global**. *Local Update Sets → New*: name `Remote Instance Integration – Global setup (no secrets)` → Submit. |
+| b | Open `sys_update_xml.list` and filter **Name contains** each of: `glide.oauth.inbound.client.credential.grant_type.enabled`, `remote_instance_integration` (Authentication Scope), `AutoGen-remote_instance_integration` (both REST API Auth Scope records), and the *Related Lists – Incident – Default view* record. |
+| c | Open each record, change **Update set** to the new set, and save. Do **not** move Application Registry, OAuth Entity Profile, Auth Scopes (client link), Crypto Module Key Policy or Module Access Policy records: they belong to OAuth clients and hold secrets or instance-specific data. |
+| d | Open the new update set → it should list exactly these 5 records → State **Complete** → **Export to XML**. |
+
+**4. Export data XML.** For each list: filter, then right-click the column header → **Export → XML (This view)**.
+
+| List | Filter | File |
+| --- | --- | --- |
+| `sys_user_group.list` | Name is one of *Vendor Support*, *Customer Escalations*, *Integration Admins* | `groups.xml` |
+| `sys_user.list` | User ID = `integration.inbound` | `integration_user.xml` |
+| `sys_user_grmember.list` | Group is one of the three groups | `group_members.xml` |
+| `sys_user_has_role.list` | User = `integration.inbound` | `integration_user_roles.xml` |
+| `sys_group_has_role.list` | Group is one of the three groups | `group_roles.xml` |
+
+The user record has no password (web service only, OAuth Client Credentials), so the files hold no secrets. Group members that are personal users may not exist on a new instance; remove those rows or re-add members after import.
+
+**5. Attach everything to the GitHub release.** *Releases → v1.0 → Edit* → attach update set A, update set B and the five data XML files. Do not add them to the app's file tree.
+
+### Rebuild on new instances
+
+Do this on **both** new instances unless noted. Use the Application picker **Global** except where stated.
+
+| Order | Step | How | Why this order |
+| --- | --- | --- | --- |
+| 1 | Check prerequisites | Same family release on both; Flow Designer plugin 29.2.x or later | Import fails across releases |
+| 2 | **Update set A** (Australia only) | *Retrieved Update Sets → Import Update Set from XML* → Preview → Commit | *changes* operators must exist before the Flows are opened |
+| 3 | **Install the app** | Basic Auth credential `GitHub` (username + PAT) → ServiceNow Studio → *Import from source control* → repo, branch `main` | Creates the tables and roles the next steps refer to |
+| 4 | **Update set B** | Import XML → Preview → Commit | The related list needs the Remote Sync Log table from step 3 |
+| 5 | **Groups and user** | `sys_user_group.list` → header right-click → **Import XML** → `groups.xml`; then `sys_user.list` → `integration_user.xml` | Users and groups are data, not update-set records |
+| 6 | **Memberships and roles** | Import `group_members.xml`, `integration_user_roles.xml`, `group_roles.xml` into their lists | Staging-table and log roles exist only after step 3 |
+| 7 | **Fix roles per side** | Customer: `integration.inbound` keeps only the *Incident From Provider* staging role. Provider: only the *Incident From Customer* staging role. Remove the other if the import added both. | Least privilege per instance |
+| 8 | **Customer-only / Provider-only groups** | Customer keeps *Vendor Support*; Provider keeps *Customer Escalations*; both keep *Integration Admins*. Delete the group that does not belong on each side. | Flow A must only fire on the Customer |
+| 9 | **OAuth clients** | [Step 1.4](#step-1--prepare-both-instances-global) | New Client ID and secret per instance |
+| 10 | **Outbound profiles, credentials, connections** | [Step 3.1–3.3](#step-3--configure-the-customer-global) and [Step 4.1–4.3](#step-4--configure-the-provider-global-unless-noted) | Secrets and URLs are per instance |
+| 11 | **Property values** | Picker **Remote Instance Integration**; [Step 3.4](#step-3--configure-the-customer-global) / [4.4](#step-4--configure-the-provider-global-unless-noted) with the new instance names and the new *Customer Escalations* sys_id | Instance names changed |
+| 12 | **Notification group** | *Remote sync failed* → re-select *Integration Admins* | Group sys_id may differ |
+| 13 | **Index check** | `correlation_id` index on Incident (Provider) | Coalesce performance |
+| 14 | **Verify** | [Smoke test and end-to-end test](#verify) | Proves the rebuild |
+
+**Time needed:** about 15 minutes per instance for steps 1–8, and about 20 minutes for the OAuth and connection steps on both sides.
+
+> If a new PDI comes with a different *vendor prefix*, that does not matter: the app keeps its scope `x_1664823_remote_0` from the repository, so property names and table names in this README stay valid.
+
 ## Troubleshooting
 
 | Symptom | Likely cause | Fix |
@@ -344,6 +413,8 @@ Scope `x_1664823_remote_0` – **Remote Instance Integration**
 | Version | Notes |
 | --- | --- |
 | 1.0 | Bidirectional Incident sync (details, progress, resolution, comments, attachments); Import Set API with coalesce; OAuth Client Credentials; centralized logging and failure alerts; all 13 tests passed |
+
+---
 
 ---
 
