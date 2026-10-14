@@ -41,7 +41,7 @@
         <update_guid_history>8ee2fee719e74390ecd5f456ba29d3dc:-470372226</update_guid_history>
     </sys_update_version>
     <sys_metadata_delete action="INSERT_OR_UPDATE">
-        <sys_audit_delete display_value="x_1664823_remote_0_incident_from_customer.x_1664823_remote_0.admin">15d3322f83e7439089a054d6feaad37e</sys_audit_delete>
+        <sys_audit_delete display_value="">15d3322f83e7439089a054d6feaad37e</sys_audit_delete>
         <sys_class_name>sys_metadata_delete</sys_class_name>
         <sys_created_by>Aqib</sys_created_by>
         <sys_created_on>2026-10-01 22:56:29</sys_created_on>

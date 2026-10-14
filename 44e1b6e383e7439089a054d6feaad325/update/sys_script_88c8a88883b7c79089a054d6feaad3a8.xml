@@ -7,7 +7,7 @@
         <action_query>false</action_query>
         <action_update>true</action_update>
         <active>true</active>
-        <add_message>true</add_message>
+        <add_message>false</add_message>
         <advanced>true</advanced>
         <change_fields>false</change_fields>
         <client_callable>false</client_callable>
@@ -52,7 +52,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>88c8a88883b7c79089a054d6feaad3a8</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Remote Sync: Send Comment</sys_name>
         <sys_overrides/>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
@@ -60,7 +60,7 @@
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
         <sys_update_name>sys_script_88c8a88883b7c79089a054d6feaad3a8</sys_update_name>
         <sys_updated_by>Aqib</sys_updated_by>
-        <sys_updated_on>2026-10-03 02:10:18</sys_updated_on>
+        <sys_updated_on>2026-10-14 15:13:53</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

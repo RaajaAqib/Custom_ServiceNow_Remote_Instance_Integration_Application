@@ -38,7 +38,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>bd173608837b4b9089a054d6feaad335</sys_id>
-        <sys_mod_count>17</sys_mod_count>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>Remote Sync: Write Log</sys_name>
         <sys_overrides/>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
@@ -46,11 +46,11 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
         <sys_update_name>sys_hub_flow_bd173608837b4b9089a054d6feaad335</sys_update_name>
         <sys_updated_by>Aqib</sys_updated_by>
-        <sys_updated_on>2026-10-03 13:22:06</sys_updated_on>
+        <sys_updated_on>2026-10-13 23:32:07</sys_updated_on>
         <type>subflow</type>
         <updation_source/>
         <version>2</version>
-        <version_record>2893cbcc833f4b9089a054d6feaad3d4</version_record>
+        <version_record/>
     </sys_hub_flow>
     <sys_translated_text action="delete_multiple" query="documentkey=bd173608837b4b9089a054d6feaad335"/>
     <sys_variable_value action="delete_multiple" query="document_key=bd173608837b4b9089a054d6feaad335"/>
@@ -845,7 +845,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_created_on>2026-10-03 12:30:51</sys_created_on>
         <sys_id>10d7b68c837b4b9089a054d6feaad3bc</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>import_status</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -868,7 +868,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_created_on>2026-10-03 12:30:53</sys_created_on>
         <sys_id>38d7f68c837b4b9089a054d6feaad36a</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>status</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -891,7 +891,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_created_on>2026-10-03 12:30:51</sys_created_on>
         <sys_id>80d7b68c837b4b9089a054d6feaad39e</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>partner_number</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -914,7 +914,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_created_on>2026-10-03 12:30:50</sys_created_on>
         <sys_id>88d7b68c837b4b9089a054d6feaad37e</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>response_error</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -937,7 +937,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_created_on>2026-10-03 12:30:52</sys_created_on>
         <sys_id>a0d7b68c837b4b9089a054d6feaad3d6</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>incident</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -960,7 +960,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_created_on>2026-10-03 12:30:51</sys_created_on>
         <sys_id>d0d7b68c837b4b9089a054d6feaad3b6</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>http_status</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -983,7 +983,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_created_on>2026-10-03 12:30:51</sys_created_on>
         <sys_id>dcd7b68c837b4b9089a054d6feaad3a3</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>flow_name</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -1006,7 +1006,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_created_on>2026-10-03 12:30:52</sys_created_on>
         <sys_id>e0d7b68c837b4b9089a054d6feaad3ce</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>request_payload</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -1856,7 +1856,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_created_on>2026-10-03 12:49:25</sys_created_on>
         <sys_id>181c3e8c83bb4b9089a054d6feaad348</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>incident</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -1879,7 +1879,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_created_on>2026-10-03 12:49:26</sys_created_on>
         <sys_id>241c3e8c83bb4b9089a054d6feaad39d</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>partner_number</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -1902,7 +1902,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_created_on>2026-10-03 12:49:25</sys_created_on>
         <sys_id>501c3e8c83bb4b9089a054d6feaad354</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>flow_name</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -1925,7 +1925,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_created_on>2026-10-03 12:49:26</sys_created_on>
         <sys_id>641c3e8c83bb4b9089a054d6feaad3ce</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>http_status</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -1948,7 +1948,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_created_on>2026-10-03 12:49:27</sys_created_on>
         <sys_id>781c7e8c83bb4b9089a054d6feaad33c</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>response_error</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -1971,7 +1971,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_created_on>2026-10-03 12:49:27</sys_created_on>
         <sys_id>ac1c7e8c83bb4b9089a054d6feaad30b</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>import_status</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -1994,7 +1994,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_created_on>2026-10-03 12:49:25</sys_created_on>
         <sys_id>d01c3e8c83bb4b9089a054d6feaad36c</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>status</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -2017,7 +2017,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
         <sys_created_on>2026-10-03 12:49:27</sys_created_on>
         <sys_id>f01c7e8c83bb4b9089a054d6feaad324</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>request_payload</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -2040,7 +2040,7 @@ Every Flow writes to Remote Sync Log in two places: on success (main line) and o
     <sys_flow_subflow_plan action="INSERT_OR_UPDATE">
         <plan>{"@class":"com.snc.process_flow.engine.serialization.plan_data.ChunkingPlanData","chunk_data":{"table":"sys_flow_subflow_plan","id":"151c7e8c83bb4b9089a054d6feaad3dc","name":"plan","plan_signature":null},"plan_data":"CHUNKING_PLAN"}</plan>
         <plan_id display_value="Remote Sync: Write Log">bd173608837b4b9089a054d6feaad335</plan_id>
-        <snapshot>1f296ca383ff039489a054d6feaad33a</snapshot>
+        <snapshot>341fe8eb93730354cc23f847dd03d60f</snapshot>
         <sys_created_by>Aqib</sys_created_by>
         <sys_created_on>2026-10-03 12:49:29</sys_created_on>
         <sys_domain>global</sys_domain>

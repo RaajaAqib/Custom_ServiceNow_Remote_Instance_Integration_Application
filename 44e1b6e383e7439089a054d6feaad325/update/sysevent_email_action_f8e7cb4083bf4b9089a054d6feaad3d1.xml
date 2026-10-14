@@ -50,7 +50,7 @@
         <order>100</order>
         <push_message_only>false</push_message_only>
         <recipient_fields/>
-        <recipient_groups name="Integration Admins">9ba98da3832fcf5089a054d6feaad305</recipient_groups>
+        <recipient_groups>9ba98da3832fcf5089a054d6feaad305</recipient_groups>
         <recipient_users/>
         <reply_to/>
         <send_self>true</send_self>

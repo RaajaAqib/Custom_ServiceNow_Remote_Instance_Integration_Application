@@ -31,7 +31,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>25117d3f83a7079089a054d6feaad329</sys_id>
-        <sys_mod_count>19</sys_mod_count>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>Create or Update Remote Record Using Import Set</sys_name>
         <sys_overrides/>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
@@ -39,7 +39,7 @@
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
         <sys_update_name>sys_hub_action_type_definition_25117d3f83a7079089a054d6feaad329</sys_update_name>
         <sys_updated_by>Aqib</sys_updated_by>
-        <sys_updated_on>2026-10-13 23:01:20</sys_updated_on>
+        <sys_updated_on>2026-10-13 23:31:53</sys_updated_on>
         <system_level>false</system_level>
         <type/>
     </sys_hub_action_type_definition>
@@ -273,18 +273,6 @@
     </sys_variable_value>
     <sys_element_mapping action="delete_multiple" query="id=60fab9b7836b079089a054d6feaad32f"/>
     <sys_element_mapping action="INSERT_OR_UPDATE">
-        <field>application</field>
-        <id>60fab9b7836b079089a054d6feaad32f</id>
-        <sys_created_by>Aqib</sys_created_by>
-        <sys_created_on>2026-10-02 13:26:27</sys_created_on>
-        <sys_id>41fab9b7836b079089a054d6feaad3f8</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>Aqib</sys_updated_by>
-        <sys_updated_on>2026-10-02 13:26:27</sys_updated_on>
-        <table>var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7</table>
-        <value/>
-    </sys_element_mapping>
-    <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>response_body</field>
         <id>60fab9b7836b079089a054d6feaad32f</id>
         <sys_created_by>Aqib</sys_created_by>
@@ -295,18 +283,6 @@
         <sys_updated_on>2026-10-02 13:26:27</sys_updated_on>
         <table>var__m_sys_hub_step_ext_input_60fab9b7836b079089a054d6feaad32f</table>
         <value>{{step[f64773ec-9676-41f9-94ad-1ae9ac5aa850].response_body}}</value>
-    </sys_element_mapping>
-    <sys_element_mapping action="INSERT_OR_UPDATE">
-        <field>script</field>
-        <id>60fab9b7836b079089a054d6feaad32f</id>
-        <sys_created_by>Aqib</sys_created_by>
-        <sys_created_on>2026-10-02 13:26:27</sys_created_on>
-        <sys_id>85fab9b7836b079089a054d6feaad3f8</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>Aqib</sys_updated_by>
-        <sys_updated_on>2026-10-02 13:26:27</sys_updated_on>
-        <table>var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7</table>
-        <value/>
     </sys_element_mapping>
     <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>status_code</field>
@@ -927,7 +903,7 @@
         <sys_created_on>2026-10-02 13:26:27</sys_created_on>
         <sys_id>49fab9b7836b079089a054d6feaad3bf</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>partner_system</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -950,7 +926,7 @@
         <sys_created_on>2026-10-02 13:26:27</sys_created_on>
         <sys_id>85fab9b7836b079089a054d6feaad3df</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>status_code</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -973,7 +949,7 @@
         <sys_created_on>2026-10-02 13:26:26</sys_created_on>
         <sys_id>b8fab9b7836b079089a054d6feaad3b8</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>import_status</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -996,7 +972,7 @@
         <sys_created_on>2026-10-02 13:26:26</sys_created_on>
         <sys_id>bcfab9b7836b079089a054d6feaad391</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>remote_sys_id</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -1019,7 +995,7 @@
         <sys_created_on>2026-10-02 13:26:26</sys_created_on>
         <sys_id>f8fab9b7836b079089a054d6feaad3b1</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>remote_number</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -1478,7 +1454,7 @@
         <sys_created_on>2026-10-02 12:52:43</sys_created_on>
         <sys_id>7e33b97783e7079089a054d6feaad314</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Credential Value</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -1567,18 +1543,6 @@
         <variable display_value="MID Application">f5e56d79b3101300176b051a16a8dce4</variable>
     </sys_variable_value>
     <sys_element_mapping action="delete_multiple" query="id=de33797783e7079089a054d6feaad322"/>
-    <sys_element_mapping action="INSERT_OR_UPDATE">
-        <field>application</field>
-        <id>de33797783e7079089a054d6feaad322</id>
-        <sys_created_by>Aqib</sys_created_by>
-        <sys_created_on>2026-10-02 12:52:42</sys_created_on>
-        <sys_id>6633797783e7079089a054d6feaad38f</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>Aqib</sys_updated_by>
-        <sys_updated_on>2026-10-02 12:52:42</sys_updated_on>
-        <table>var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7</table>
-        <value/>
-    </sys_element_mapping>
     <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>business_service</field>
         <id>de33797783e7079089a054d6feaad322</id>
@@ -1698,18 +1662,6 @@
         <sys_updated_on>2026-10-02 22:35:42</sys_updated_on>
         <table>var__m_sys_hub_step_ext_input_de33797783e7079089a054d6feaad322</table>
         <value>{{action.receiver_sys_id}}</value>
-    </sys_element_mapping>
-    <sys_element_mapping action="INSERT_OR_UPDATE">
-        <field>script</field>
-        <id>de33797783e7079089a054d6feaad322</id>
-        <sys_created_by>Aqib</sys_created_by>
-        <sys_created_on>2026-10-02 12:52:42</sys_created_on>
-        <sys_id>2633797783e7079089a054d6feaad390</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>Aqib</sys_updated_by>
-        <sys_updated_on>2026-10-02 12:52:42</sys_updated_on>
-        <table>var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7</table>
-        <value/>
     </sys_element_mapping>
     <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>sender_number</field>
@@ -3410,7 +3362,7 @@
         <sys_created_on>2026-10-02 13:26:21</sys_created_on>
         <sys_id>5bea39b7836b079089a054d6feaad3d0</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>payload</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -3433,7 +3385,7 @@
         <sys_created_on>2026-10-02 13:26:21</sys_created_on>
         <sys_id>6fea39b7836b079089a054d6feaad3fc</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>resource_path</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -5707,7 +5659,7 @@
         <sys_created_on>2026-10-02 12:52:37</sys_created_on>
         <sys_id>1d33f57783e7079089a054d6feaad34a</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>caller_email</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -5730,7 +5682,7 @@
         <sys_created_on>2026-10-02 12:52:39</sys_created_on>
         <sys_id>3533397783e7079089a054d6feaad379</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>close_notes</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -5753,7 +5705,7 @@
         <sys_created_on>2026-10-02 12:52:38</sys_created_on>
         <sys_id>3933397783e7079089a054d6feaad369</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>state</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -5776,7 +5728,7 @@
         <sys_created_on>2026-10-02 12:52:36</sys_created_on>
         <sys_id>4133b57783e7079089a054d6feaad3ed</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>receiver_sys_id</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -5799,7 +5751,7 @@
         <sys_created_on>2026-10-02 12:52:36</sys_created_on>
         <sys_id>4933b57783e7079089a054d6feaad3cb</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>sender_sys_id</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -5822,7 +5774,7 @@
         <sys_created_on>2026-10-02 12:52:37</sys_created_on>
         <sys_id>5133f57783e7079089a054d6feaad35f</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>impact</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -5845,7 +5797,7 @@
         <sys_created_on>2026-10-02 12:52:36</sys_created_on>
         <sys_id>5d33b57783e7079089a054d6feaad3fc</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>short_description</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -5868,7 +5820,7 @@
         <sys_created_on>2026-10-02 12:52:39</sys_created_on>
         <sys_id>7933397783e7079089a054d6feaad38d</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>comments</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -5891,7 +5843,7 @@
         <sys_created_on>2026-10-02 12:52:38</sys_created_on>
         <sys_id>a133f57783e7079089a054d6feaad394</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>category</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -5914,7 +5866,7 @@
         <sys_created_on>2026-10-02 12:52:38</sys_created_on>
         <sys_id>a533397783e7079089a054d6feaad34d</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>service_offering</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -5937,7 +5889,7 @@
         <sys_created_on>2026-10-02 12:52:38</sys_created_on>
         <sys_id>a933f57783e7079089a054d6feaad3e6</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>subcategory</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -5960,7 +5912,7 @@
         <sys_created_on>2026-10-02 12:52:39</sys_created_on>
         <sys_id>b533397783e7079089a054d6feaad371</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>close_code</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -5983,7 +5935,7 @@
         <sys_created_on>2026-10-02 12:52:36</sys_created_on>
         <sys_id>cd33b57783e7079089a054d6feaad3f4</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>sender_number</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -6006,7 +5958,7 @@
         <sys_created_on>2026-10-02 12:52:37</sys_created_on>
         <sys_id>d933f57783e7079089a054d6feaad304</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>description</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -6029,7 +5981,7 @@
         <sys_created_on>2026-10-02 12:52:38</sys_created_on>
         <sys_id>e533f57783e7079089a054d6feaad3ee</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>business_service</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -6052,7 +6004,7 @@
         <sys_created_on>2026-10-02 12:52:37</sys_created_on>
         <sys_id>ed33f57783e7079089a054d6feaad366</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>urgency</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -6075,7 +6027,7 @@
         <sys_created_on>2026-10-02 12:52:38</sys_created_on>
         <sys_id>f133397783e7079089a054d6feaad355</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>cmdb_ci</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -6099,7 +6051,7 @@
         <sys_created_on>2026-10-02 13:33:46</sys_created_on>
         <sys_id>00ac357f836b079089a054d6feaad3c4</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>remote_number</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -6122,7 +6074,7 @@
         <sys_created_on>2026-10-02 12:52:44</sys_created_on>
         <sys_id>0333b97783e7079089a054d6feaad37e</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Action Status</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -6145,7 +6097,7 @@
         <sys_created_on>2026-10-02 13:33:47</sys_created_on>
         <sys_id>5cac757f836b079089a054d6feaad332</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>response_body</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -6168,7 +6120,7 @@
         <sys_created_on>2026-10-02 13:33:46</sys_created_on>
         <sys_id>94ac757f836b079089a054d6feaad316</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>status_code</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -6191,7 +6143,7 @@
         <sys_created_on>2026-10-02 13:33:47</sys_created_on>
         <sys_id>94ac757f836b079089a054d6feaad31e</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>payload</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -6214,7 +6166,7 @@
         <sys_created_on>2026-10-02 13:33:46</sys_created_on>
         <sys_id>98ac357f836b079089a054d6feaad3d4</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>import_status</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -6237,7 +6189,7 @@
         <sys_created_on>2026-10-02 13:33:45</sys_created_on>
         <sys_id>c0ac357f836b079089a054d6feaad3aa</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>remote_sys_id</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -6260,7 +6212,7 @@
         <sys_created_on>2026-10-02 12:52:45</sys_created_on>
         <sys_id>db33b97783e7079089a054d6feaad3af</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Don't Treat as Error</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -6283,7 +6235,7 @@
         <sys_created_on>2026-10-02 13:33:46</sys_created_on>
         <sys_id>dcac757f836b079089a054d6feaad301</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>partner_system</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -6939,7 +6891,7 @@
         <sys_created_on>2026-10-02 14:12:04</sys_created_on>
         <sys_id>9965c233832f079089a054d6feaad3d0</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Credential Value</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -7028,18 +6980,6 @@
         <variable display_value="Script">71aa7f6647032200b4fad7527c9a719b</variable>
     </sys_variable_value>
     <sys_element_mapping action="delete_multiple" query="id=88654233832f079089a054d6feaad3df"/>
-    <sys_element_mapping action="INSERT_OR_UPDATE">
-        <field>application</field>
-        <id>88654233832f079089a054d6feaad3df</id>
-        <sys_created_by>Aqib</sys_created_by>
-        <sys_created_on>2026-10-02 14:12:02</sys_created_on>
-        <sys_id>2c658233832f079089a054d6feaad37c</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>Aqib</sys_updated_by>
-        <sys_updated_on>2026-10-02 14:12:02</sys_updated_on>
-        <table>var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7</table>
-        <value/>
-    </sys_element_mapping>
     <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>business_service</field>
         <id>88654233832f079089a054d6feaad3df</id>
@@ -7159,18 +7099,6 @@
         <sys_updated_on>2026-10-02 22:36:27</sys_updated_on>
         <table>var__m_sys_hub_step_ext_input_88654233832f079089a054d6feaad3df</table>
         <value>{{action.receiver_sys_id}}</value>
-    </sys_element_mapping>
-    <sys_element_mapping action="INSERT_OR_UPDATE">
-        <field>script</field>
-        <id>88654233832f079089a054d6feaad3df</id>
-        <sys_created_by>Aqib</sys_created_by>
-        <sys_created_on>2026-10-02 14:12:02</sys_created_on>
-        <sys_id>68658233832f079089a054d6feaad37d</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>Aqib</sys_updated_by>
-        <sys_updated_on>2026-10-02 14:12:02</sys_updated_on>
-        <table>var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7</table>
-        <value/>
     </sys_element_mapping>
     <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>sender_number</field>
@@ -8871,7 +8799,7 @@
         <sys_created_on>2026-10-02 14:12:00</sys_created_on>
         <sys_id>98658233832f079089a054d6feaad326</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>resource_path</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -8894,7 +8822,7 @@
         <sys_created_on>2026-10-02 14:12:00</sys_created_on>
         <sys_id>d4654233832f079089a054d6feaad3fa</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>payload</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -8994,18 +8922,6 @@
     </sys_variable_value>
     <sys_element_mapping action="delete_multiple" query="id=ad650633832f079089a054d6feaad365"/>
     <sys_element_mapping action="INSERT_OR_UPDATE">
-        <field>application</field>
-        <id>ad650633832f079089a054d6feaad365</id>
-        <sys_created_by>Aqib</sys_created_by>
-        <sys_created_on>2026-10-02 14:12:08</sys_created_on>
-        <sys_id>de654633832f079089a054d6feaad3a1</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>Aqib</sys_updated_by>
-        <sys_updated_on>2026-10-02 14:12:08</sys_updated_on>
-        <table>var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7</table>
-        <value/>
-    </sys_element_mapping>
-    <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>response_body</field>
         <id>ad650633832f079089a054d6feaad365</id>
         <sys_created_by>Aqib</sys_created_by>
@@ -9016,18 +8932,6 @@
         <sys_updated_on>2026-10-02 14:12:08</sys_updated_on>
         <table>var__m_sys_hub_step_ext_input_ad650633832f079089a054d6feaad365</table>
         <value>{{step[f64773ec-9676-41f9-94ad-1ae9ac5aa850].response_body}}</value>
-    </sys_element_mapping>
-    <sys_element_mapping action="INSERT_OR_UPDATE">
-        <field>script</field>
-        <id>ad650633832f079089a054d6feaad365</id>
-        <sys_created_by>Aqib</sys_created_by>
-        <sys_created_on>2026-10-02 14:12:08</sys_created_on>
-        <sys_id>16654633832f079089a054d6feaad3a2</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>Aqib</sys_updated_by>
-        <sys_updated_on>2026-10-02 14:12:08</sys_updated_on>
-        <table>var__m_sys_flow_step_definition_input_106afb6647032200b4fad7527c9a71e7</table>
-        <value/>
     </sys_element_mapping>
     <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>status_code</field>
@@ -9648,7 +9552,7 @@
         <sys_created_on>2026-10-02 14:12:08</sys_created_on>
         <sys_id>0a654633832f079089a054d6feaad38f</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>partner_system</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -9671,7 +9575,7 @@
         <sys_created_on>2026-10-02 14:12:07</sys_created_on>
         <sys_id>4e654633832f079089a054d6feaad368</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>remote_number</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -9694,7 +9598,7 @@
         <sys_created_on>2026-10-02 14:12:07</sys_created_on>
         <sys_id>82650633832f079089a054d6feaad3d9</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>remote_sys_id</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -9717,7 +9621,7 @@
         <sys_created_on>2026-10-02 14:12:08</sys_created_on>
         <sys_id>ca654633832f079089a054d6feaad36f</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>import_status</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -9740,7 +9644,7 @@
         <sys_created_on>2026-10-02 14:12:08</sys_created_on>
         <sys_id>d6654633832f079089a054d6feaad396</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>status_code</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12014,7 +11918,7 @@
         <sys_created_on>2026-10-02 14:11:55</sys_created_on>
         <sys_id>03550233832f079089a054d6feaad302</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>description</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12037,7 +11941,7 @@
         <sys_created_on>2026-10-02 14:11:57</sys_created_on>
         <sys_id>17550233832f079089a054d6feaad36f</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>business_service</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12060,7 +11964,7 @@
         <sys_created_on>2026-10-02 14:11:55</sys_created_on>
         <sys_id>3655ceff83eb079089a054d6feaad3e1</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>short_description</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12083,7 +11987,7 @@
         <sys_created_on>2026-10-02 14:11:58</sys_created_on>
         <sys_id>37554233832f079089a054d6feaad38f</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>close_notes</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12106,7 +12010,7 @@
         <sys_created_on>2026-10-02 14:11:58</sys_created_on>
         <sys_id>3b554233832f079089a054d6feaad36e</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>close_code</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12129,7 +12033,7 @@
         <sys_created_on>2026-10-02 14:11:54</sys_created_on>
         <sys_id>3e55ceff83eb079089a054d6feaad39f</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>receiver_sys_id</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12152,7 +12056,7 @@
         <sys_created_on>2026-10-02 14:11:55</sys_created_on>
         <sys_id>4b550233832f079089a054d6feaad32a</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>impact</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12175,7 +12079,7 @@
         <sys_created_on>2026-10-02 14:11:55</sys_created_on>
         <sys_id>4f550233832f079089a054d6feaad309</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>caller_email</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12198,7 +12102,7 @@
         <sys_created_on>2026-10-02 14:11:56</sys_created_on>
         <sys_id>5f550233832f079089a054d6feaad33e</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>urgency</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12221,7 +12125,7 @@
         <sys_created_on>2026-10-02 14:11:57</sys_created_on>
         <sys_id>63554233832f079089a054d6feaad31c</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>state</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12244,7 +12148,7 @@
         <sys_created_on>2026-10-02 14:11:58</sys_created_on>
         <sys_id>73554233832f079089a054d6feaad397</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>comments</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12267,7 +12171,7 @@
         <sys_created_on>2026-10-02 14:11:54</sys_created_on>
         <sys_id>ba55ceff83eb079089a054d6feaad3a7</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>sender_number</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12290,7 +12194,7 @@
         <sys_created_on>2026-10-02 14:11:56</sys_created_on>
         <sys_id>d7550233832f079089a054d6feaad367</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>subcategory</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12313,7 +12217,7 @@
         <sys_created_on>2026-10-02 14:11:56</sys_created_on>
         <sys_id>db550233832f079089a054d6feaad346</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>category</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12336,7 +12240,7 @@
         <sys_created_on>2026-10-02 14:11:57</sys_created_on>
         <sys_id>e3554233832f079089a054d6feaad314</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>cmdb_ci</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12359,7 +12263,7 @@
         <sys_created_on>2026-10-02 14:11:54</sys_created_on>
         <sys_id>ea55ceff83eb079089a054d6feaad359</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>sender_sys_id</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12382,7 +12286,7 @@
         <sys_created_on>2026-10-02 14:11:57</sys_created_on>
         <sys_id>ef550233832f079089a054d6feaad38f</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>service_offering</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12406,7 +12310,7 @@
         <sys_created_on>2026-10-02 14:12:09</sys_created_on>
         <sys_id>1e658633832f079089a054d6feaad320</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>remote_sys_id</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12429,7 +12333,7 @@
         <sys_created_on>2026-10-02 14:12:10</sys_created_on>
         <sys_id>2e658633832f079089a054d6feaad348</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Don't Treat as Error</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12452,7 +12356,7 @@
         <sys_created_on>2026-10-02 14:12:10</sys_created_on>
         <sys_id>3e658633832f079089a054d6feaad350</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>import_status</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12475,7 +12379,7 @@
         <sys_created_on>2026-10-02 14:12:11</sys_created_on>
         <sys_id>76658633832f079089a054d6feaad3a3</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>partner_system</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12498,7 +12402,7 @@
         <sys_created_on>2026-10-02 14:12:11</sys_created_on>
         <sys_id>83658633832f079089a054d6feaad3cc</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>payload</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12521,7 +12425,7 @@
         <sys_created_on>2026-10-02 14:12:12</sys_created_on>
         <sys_id>8f65c633832f079089a054d6feaad305</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>response_body</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12544,7 +12448,7 @@
         <sys_created_on>2026-10-02 14:12:09</sys_created_on>
         <sys_id>ae658633832f079089a054d6feaad328</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Action Status</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12567,7 +12471,7 @@
         <sys_created_on>2026-10-02 14:12:09</sys_created_on>
         <sys_id>ae658633832f079089a054d6feaad330</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>remote_number</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -12590,7 +12494,7 @@
         <sys_created_on>2026-10-02 14:12:11</sys_created_on>
         <sys_id>f2658633832f079089a054d6feaad3c4</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>status_code</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>

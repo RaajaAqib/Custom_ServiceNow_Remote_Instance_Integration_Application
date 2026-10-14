@@ -37,7 +37,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>01cb4a7b836f079089a054d6feaad31b</sys_id>
-        <sys_mod_count>42</sys_mod_count>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>Remote Sync: Send Incident Details</sys_name>
         <sys_overrides/>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
@@ -45,17 +45,17 @@
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
         <sys_update_name>sys_hub_flow_01cb4a7b836f079089a054d6feaad31b</sys_update_name>
         <sys_updated_by>Aqib</sys_updated_by>
-        <sys_updated_on>2026-10-13 23:22:53</sys_updated_on>
+        <sys_updated_on>2026-10-14 15:07:35</sys_updated_on>
         <type>flow</type>
         <updation_source/>
         <version>2</version>
-        <version_record>f3ec2c2b8333439489a054d6feaad3d6</version_record>
+        <version_record/>
     </sys_hub_flow>
     <sys_translated_text action="delete_multiple" query="documentkey=01cb4a7b836f079089a054d6feaad31b"/>
     <sys_variable_value action="delete_multiple" query="document_key=01cb4a7b836f079089a054d6feaad31b"/>
     <sys_flow_record_trigger action="INSERT_OR_UPDATE">
         <active>true</active>
-        <condition table="incident">assignment_group=e7d7b063832bcf5089a054d6feaad3ca^sys_updated_by!=integration.inbound^correlation_idISEMPTY^ORshort_descriptionVALCHANGES^ORdescriptionVALCHANGES^ORimpactVALCHANGES^ORurgencyVALCHANGES^ORcategoryVALCHANGES^ORsubcategoryVALCHANGES^ORservice_offeringVALCHANGES^ORbusiness_serviceVALCHANGES^ORcmdb_ciVALCHANGES<item display_table="sys_user_group" display_value="Vendor Support" endquery="false" field="assignment_group" goto="false" newquery="false" operator="=" or="false" value="e7d7b063832bcf5089a054d6feaad3ca"/>
+        <condition table="incident">assignment_group=e7d7b063832bcf5089a054d6feaad3ca^sys_updated_by!=integration.inbound^correlation_idISEMPTY^ORshort_descriptionVALCHANGES^ORdescriptionVALCHANGES^ORimpactVALCHANGES^ORurgencyVALCHANGES^ORcategoryVALCHANGES^ORsubcategoryVALCHANGES^ORservice_offeringVALCHANGES^ORbusiness_serviceVALCHANGES^ORcmdb_ciVALCHANGES<item display_table="sys_user_group" display_value="Customer Escalations" endquery="false" field="assignment_group" goto="false" newquery="false" operator="=" or="false" value="e7d7b063832bcf5089a054d6feaad3ca"/>
             <item endquery="false" field="sys_updated_by" goto="false" newquery="false" operator="!=" or="false" value="integration.inbound"/>
             <item endquery="false" field="correlation_id" goto="false" newquery="false" operator="ISEMPTY" or="false" value=""/>
             <item endquery="false" field="short_description" goto="false" newquery="false" operator="VALCHANGES" or="true" value=""/>
@@ -594,7 +594,7 @@
         <sys_created_on>2026-10-02 14:40:26</sys_created_on>
         <sys_id>2ceb06fb836f079089a054d6feaad384</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Record</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -617,7 +617,7 @@
         <sys_created_on>2026-10-02 14:40:25</sys_created_on>
         <sys_id>a0eb06fb836f079089a054d6feaad347</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Table Name</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -640,7 +640,7 @@
         <sys_created_on>2026-10-02 14:40:26</sys_created_on>
         <sys_id>b4eb06fb836f079089a054d6feaad3c3</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Changed Fields</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -1185,7 +1185,7 @@
         <sys_created_on>2026-10-02 21:59:49</sys_created_on>
         <sys_id>49703f33832b879089a054d6feaad369</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Changed Fields</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -1208,7 +1208,7 @@
         <sys_created_on>2026-10-02 21:59:48</sys_created_on>
         <sys_id>b8703f33832b879089a054d6feaad343</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Record</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
@@ -1231,7 +1231,7 @@
         <sys_created_on>2026-10-02 21:59:49</sys_created_on>
         <sys_id>c9703f33832b879089a054d6feaad39a</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name/>
+        <sys_name>Table Name</sys_name>
         <sys_package display_value="Remote Instance Integration (Custom)" source="x_1664823_remote_0">44e1b6e383e7439089a054d6feaad325</sys_package>
         <sys_policy/>
         <sys_scope display_value="Remote Instance Integration (Custom)">44e1b6e383e7439089a054d6feaad325</sys_scope>
