@@ -156,6 +156,8 @@ The outbound profile **Outbound to X** always gets the Client ID and secret of t
 | Customer Escalations | Provider | Vendor agents with `itil` (queue for incoming tickets) |
 | Integration Admins | Both | People who support the integration (log role added in Step 3/4) |
 
+> **Tip – create all three groups on the development (Customer) instance first.** Then one XML export of the groups, user and roles can be imported on both instances with the same sys_ids (see [Backup and rebuild](#backup-and-rebuild-after-a-pdi-is-reclaimed)). On the Provider, set *Vendor Support* to **Active = false**; on the Customer, *Customer Escalations* stays unused.
+
 **1.3 Enable inbound Client Credentials** – *sys_properties.list*: `glide.oauth.inbound.client.credential.grant_type.enabled` = **true** (create as *true \| false* if missing).
 
 **1.4 Inbound OAuth client** – *Machine Identity Console → Inbound integrations → New integration → **OAuth - Client credentials grant***:
@@ -294,7 +296,7 @@ Personal Developer Instances are reclaimed after inactivity. Keep three backups 
 | 1 | **App (source control)** | Tables, transform maps, properties, alias, Actions, Flows, Subflows, Business Rule, notification, cross-scope privileges | This GitHub repository | No |
 | 2 | **Update set A – PRB2005619 dictionary** | `extended_operators` on 12 Task/Incident fields | XML, attached to Release v1.0 | No |
 | 3 | **Update set B – Global setup (no secrets)** | Inbound client-credentials property, auth scope `remote_instance_integration` and its two REST API Auth Scope records, Incident form related list *Remote Sync Log* | XML, attached to Release v1.0 | No |
-| 4 | **Data XML** | Groups, `integration.inbound`, group members, user and group roles | XML files, attached to Release v1.0 | No |
+| 4 | **Data XML** (exported once, from the Customer) | Three groups, `integration.inbound`, group members, user and group roles | Five XML files, attached to Release v1.0; imported on both instances | No |
 | – | **Never backed up** | OAuth clients, outbound OAuth profiles, OAuth 2.0 credentials, connections, GitHub credential, property values | Recreated on every new instance | **Yes** (or instance-specific) |
 
 ### Before the instance is reclaimed (on the development / Customer instance)
@@ -324,6 +326,26 @@ Personal Developer Instances are reclaimed after inactivity. Keep three backups 
 
 The user record has no password (web service only, OAuth Client Credentials), so the files hold no secrets. Group members that are personal users may not exist on a new instance; remove those rows or re-add members after import.
 
+**One set of files for both sides.** All three groups exist on the Customer (Customer Escalations was created there too), so every file is exported **once, from the Customer**, and imported on **both** new instances. XML import matches records by **sys_id**, so each group, the user and each role grant keep the **same sys_id on every instance**. That is why nothing needs re-pointing afterwards:
+
+| Reference in the app | Points to | Result after import |
+| --- | --- | --- |
+| Flow *Send Incident Details* trigger: *Assignment group is Vendor Support* | Vendor Support sys_id | Works on the new Customer without editing the Flow |
+| Notification *Remote sync failed* → recipients | Integration Admins sys_id | No need to re-select the group |
+| Provider property `default_assignment_group` | Customer Escalations sys_id | The same value every time (note it below) |
+
+Re-importing the same file updates the same records; it never duplicates them. A duplicate only appears if a group or the user was **created by hand** on the new instance first, so always import before creating anything by hand.
+
+**Keep the local backup folder like this:**
+
+```text
+Incident Integration Between Two ServiceNow Instances/
+├── Documentation/   README.md, design document export, screenshots
+├── Update Sets/     A_PRB2005619_dictionary.xml, B_Global_setup_no_secrets.xml
+└── XML Records/     groups.xml, integration_user.xml, group_members.xml,
+                     integration_user_roles.xml, group_roles.xml
+```
+
 **5. Attach everything to the GitHub release.** *Releases → v1.0 → Edit* → attach update set A, update set B and the five data XML files. Do not add them to the app's file tree.
 
 ### Rebuild on new instances
@@ -338,12 +360,12 @@ Do this on **both** new instances unless noted. Use the Application picker **Glo
 | 4 | **Update set B** | Import XML → Preview → Commit | The related list needs the Remote Sync Log table from step 3 |
 | 5 | **Groups and user** | `sys_user_group.list` → header right-click → **Import XML** → `groups.xml`; then `sys_user.list` → `integration_user.xml` | Users and groups are data, not update-set records |
 | 6 | **Memberships and roles** | Import `group_members.xml`, `integration_user_roles.xml`, `group_roles.xml` into their lists | Staging-table and log roles exist only after step 3 |
-| 7 | **Fix roles per side** | Customer: `integration.inbound` keeps only the *Incident From Provider* staging role. Provider: only the *Incident From Customer* staging role. Remove the other if the import added both. | Least privilege per instance |
-| 8 | **Customer-only / Provider-only groups** | Customer keeps *Vendor Support*; Provider keeps *Customer Escalations*; both keep *Integration Admins*. Delete the group that does not belong on each side. | Flow A must only fire on the Customer |
+| 7 | **Fix the staging role on the Provider** | The roles file came from the Customer, so `integration.inbound` has the *Incident From Provider* staging role. On the **Provider** only: remove that role and add the *Incident From Customer* staging role. The Customer needs no change. | Each side receives data in a different staging table; least privilege |
+| 8 | **Deactivate the group that does not belong** | **Provider:** open *Vendor Support* → **Active = false**. **Customer:** *Customer Escalations* is unused there; leave it or set **Active = false**. Deactivate rather than delete, so the sys_id stays reserved for the next rebuild. | An active *Vendor Support* on the Provider would let Flow *Send Incident Details* fire there |
 | 9 | **OAuth clients** | [Step 1.4](#step-1--prepare-both-instances-global) | New Client ID and secret per instance |
 | 10 | **Outbound profiles, credentials, connections** | [Step 3.1–3.3](#step-3--configure-the-customer-global) and [Step 4.1–4.3](#step-4--configure-the-provider-global-unless-noted) | Secrets and URLs are per instance |
-| 11 | **Property values** | Picker **Remote Instance Integration**; [Step 3.4](#step-3--configure-the-customer-global) / [4.4](#step-4--configure-the-provider-global-unless-noted) with the new instance names and the new *Customer Escalations* sys_id | Instance names changed |
-| 12 | **Notification group** | *Remote sync failed* → re-select *Integration Admins* | Group sys_id may differ |
+| 11 | **Property values** | Picker **Remote Instance Integration**; [Step 3.4](#step-3--configure-the-customer-global) / [4.4](#step-4--configure-the-provider-global-unless-noted) with the new instance names. `default_assignment_group` on the Provider = the *Customer Escalations* sys_id from `groups.xml` (unchanged across rebuilds). | Instance names changed |
+| 12 | **Notification group** | Check *Remote sync failed* → *Who will receive* shows **Integration Admins**. It should, because the group kept its sys_id. | Confirms the import |
 | 13 | **Index check** | `correlation_id` index on Incident (Provider) | Coalesce performance |
 | 14 | **Verify** | [Smoke test and end-to-end test](#verify) | Proves the rebuild |
 
@@ -412,8 +434,9 @@ Scope `x_1664823_remote_0` – **Remote Instance Integration**
 
 | Version | Notes |
 | --- | --- |
-| 1.0 | Bidirectional Incident sync (details, progress, resolution, comments, attachments); Import Set API with coalesce; OAuth Client Credentials; centralized logging and failure alerts; all 13 tests passed |
+| 1.0 | Bidirectional Incident sync (details, progress, resolution, comments, attachments); Import Set API with coalesce; OAuth Client Credentials; centralized logging and failure alerts; all 13 tests passed; backup set (app in Git, update sets A and B, five data XML files) for rebuild |
 
+---
 ---
 
 ---
